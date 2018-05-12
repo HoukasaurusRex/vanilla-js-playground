@@ -1,0 +1,20 @@
+/**
+  * Main Styles
+**/
+
+/* ----- Scaffolding ----- */
+
+/* ----- Header ----- */
+
+/* ----- Body ----- */
+
+/* ----- Footer ----- */
+footer > .img-wrapper {
+  width: 20px;
+  height: 12px;
+}
+
+.img-wrapper img {
+  width: 100%;
+  height: auto;
+}
