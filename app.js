@@ -1,6 +1,7 @@
 const express = require('express');
 const exphbs  = require('express-handlebars');
 
+const port = process.env.PORT || 3000;
 const app = express();
 
 /**
@@ -42,6 +43,6 @@ app.get('/01-jsdrumkit', (req, res) => {
   });
 });
 
-app.listen(3000, () => {
-  console.log('Server is listening on port 3000...');
+app.listen(port, () => {
+  console.log(`Server is listening on port ${port}...`);
 });
