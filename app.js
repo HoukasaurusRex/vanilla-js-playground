@@ -1,6 +1,12 @@
 const express = require('express');
 const exphbs  = require('express-handlebars');
 
+/**
+  * Controllers
+**/
+const homeController = require('./controllers/home');
+const vanillajsController = require('./controllers/vanillajs')
+
 const port = process.env.PORT || 3000;
 const app = express();
 
@@ -26,23 +32,17 @@ app.set('view engine', 'handlebars');
 app.use(express.static(__dirname + '/public'));
 
 /**
-  * Routes
+  * Primary app routes
 **/
+app.get('/', homeController.home);
+app.get('/01-jsdrumkit', vanillajsController.vanilladrums);
+app.get('/02-js-css-clock', vanillajsController.vanillaclock);
 
-app.get('/', (req, res) => {
-  res.render('home'), {
-    title: 'Home',
-    page: 'home'
-  }
-});
-
-app.get('/01-jsdrumkit', (req, res) => {
-  res.render('pages/01-jsdrumkit', {
-    title: 'Vanilla Drums',
-    page: '01-jsdrumkit'
-  });
-});
-
+/**
+  * Server listening
+**/
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}...`);
 });
+
+module.exports = app;

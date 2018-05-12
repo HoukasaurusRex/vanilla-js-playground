@@ -1,14 +1,29 @@
 /**
-  * Main Styles
+  * ============== Variables ==============
 **/
 
-/* ----- Scaffolding ----- */
+/**
+  * ============== Scaffolding ==============
+**/
 
-/* ----- Header ----- */
+html {
+  background-size: cover;
+  font-family: 'helvetica neue';
+  text-align: center;
+  font-size: 10px;
+}
 
-/* ----- Body ----- */
+/**
+  * ============== Header ==============
+**/
 
-/* ----- Footer ----- */
+/**
+  * ============== Body ==============
+**/
+
+/**
+  * ============== Footer ==============
+**/
 footer > .img-wrapper {
   width: 20px;
   height: 12px;
