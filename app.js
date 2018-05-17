@@ -5,13 +5,13 @@ const exphbs  = require('express-handlebars');
   * Controllers
 **/
 const homeController = require('./controllers/home');
-const vanillajsController = require('./controllers/vanillajs')
+const vanillajsController = require('./controllers/vanillajs');
 
 const port = process.env.PORT || 3000;
 const app = express();
 
 /**
- * Express configuration.
+ * Express configuration
  */
 // app.set('host', process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0');
 // app.set('port', process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 3000);
@@ -37,6 +37,9 @@ app.use(express.static(__dirname + '/public'));
 app.get('/', homeController.home);
 app.get('/01-jsdrumkit', vanillajsController.vanilladrums);
 app.get('/02-js-css-clock', vanillajsController.vanillaclock);
+app.get('/03-cssvariables', vanillajsController.vanillavariables);
+app.get('/04-arraycardio-one', vanillajsController.vanillarraysOne);
+app.get('/05-flexpanels', vanillajsController.vanillaflexpanels);
 
 /**
   * Server listening

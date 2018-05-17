@@ -8,19 +8,26 @@ A collection of javascript projects served up on node with express and designed 
 
 ## Overview
 * JS Drumkit
+* JS Clock
 
 ### To-Do
 - [x] Integrate Handlebars
-- [x] Add controllers and routes
-- [ ] Separate Routes
-- [ ] Create Handlebars Scripts & CSS Partials
+- [x] Add Controllers and Routes
+- [x] Create Dynamic Scripts & CSS
+- [ ] Image Credit Partials
 - [ ] Create Home Page
  - Header with page links
  - Body with information
  - Footer with contact
 - [ ] Complete 30 Unique Projects
+- [ ] Write HTML Blog Post for Array Pages
 
 ### What Next?
 - [ ] CSS Flexbox and Grid Integration
 - [ ] CSS Page Transitions
-- [ ] Domain
+- [ ] CSS Grid Thumbnail Preview Page
+- [ ] Custom Layout for Vanilla Projects
+  - Include Scrolling Side Bar Project Viewer
+- [ ] Custom Domain
+- [ ] Static Blog Integration
+- [ ] Project Roadmap
