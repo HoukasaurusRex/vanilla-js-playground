@@ -21,6 +21,7 @@ A collection of javascript projects served up on node with express and designed 
  - Footer with contact
 - [ ] Complete 30 Unique Projects
 - [ ] Write HTML Blog Post for Array Pages
+- [ ] Include Blog Push Drawer on Vanilla Pages to Explain Page
 
 ### What Next?
 - [ ] CSS Flexbox and Grid Integration
@@ -28,6 +29,8 @@ A collection of javascript projects served up on node with express and designed 
 - [ ] CSS Grid Thumbnail Preview Page
 - [ ] Custom Layout for Vanilla Projects
   - Include Scrolling Side Bar Project Viewer
+- [ ] Incorporate Material Design
 - [ ] Custom Domain
 - [ ] Static Blog Integration
+- [ ] Add Mocha Testing
 - [ ] Project Roadmap

@@ -5,7 +5,7 @@ const exphbs  = require('express-handlebars');
   * Controllers
 **/
 const homeController = require('./controllers/home');
-const vanillajsController = require('./controllers/vanillajs');
+const vanillajsController = require('./controllers/vanilla');
 
 const port = process.env.PORT || 3000;
 const app = express();
@@ -38,8 +38,9 @@ app.get('/', homeController.home);
 app.get('/01-jsdrumkit', vanillajsController.vanilladrums);
 app.get('/02-js-css-clock', vanillajsController.vanillaclock);
 app.get('/03-cssvariables', vanillajsController.vanillavariables);
-app.get('/04-arraycardio-one', vanillajsController.vanillarraysOne);
+app.get('/04-arraycardio', vanillajsController.vanillarrays);
 app.get('/05-flexpanels', vanillajsController.vanillaflexpanels);
+app.get('/06-typeahead', vanillajsController.vanillatypeahead);
 
 /**
   * Server listening

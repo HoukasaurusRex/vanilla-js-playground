@@ -1,5 +1,5 @@
 function homeCSS() {
-  const html = document.getElementsByTagName('html')[0];
+  const html = document.documentElement;
   html.style.setProperty("--main-background", "url(/assets/backgrounds/vanilla.jpg)");
 }
 
@@ -7,7 +7,7 @@ function homeCSS() {
  * ============== Drumkit JS ==============
 */
 function drumkitCSS() {
-  const html = document.getElementsByTagName('html')[0];
+  const html = document.documentElement;
   html.style.setProperty("--main-background", "url(/assets/backgrounds/drums.jpg)");
 }
 function drumkit(){
@@ -34,7 +34,7 @@ function drumkit(){
  * ============== Clock JS ==============
 */
 function clockCSS() {
-  const html = document.getElementsByTagName('html')[0];
+  const html = document.documentElement;
   html.style.setProperty("--main-background", "url(/assets/backgrounds/egg.jpg)");
 }
 function clock() {
@@ -68,7 +68,7 @@ function clock() {
  * ============== CSS Variables ==============
 */
 function cssvariablesCSS() {
-  const html = document.getElementsByTagName('html')[0];
+  const html = document.documentElement;
   html.style.setProperty("--main-background", "none");
   html.style.setProperty("--main-background-size", "none");
   html.style.setProperty("--body-background", "#193549");
@@ -89,11 +89,11 @@ function cssvariables() {
 }
 
 /*
- * ============== Array Cardio One ==============
+ * ============== Array Cardio ==============
 */
-function arrayCardioOne() {
+function arrayCardio() {
   // Get your shorts on - this is an array workout!
-  // ## Array Cardio Day 1
+  console.log('|======== Array Problem Set One ========>');
 
   // Some data we can work with
   const inventors = [
@@ -175,6 +175,51 @@ function arrayCardioOne() {
   console.log(itemSum);
   // .reduce() can create objects and return frequency of values
 }
+function arrayCardioTwo() {
+  console.log('|======== Array Problem Set Two ========>');
+  const people = [
+    { name: 'Wes', year: 1988 },
+    { name: 'Kait', year: 1986 },
+    { name: 'Irv', year: 1970 },
+    { name: 'Lux', year: 2015 }
+  ];
+  const comments = [
+    { text: 'Love this!', id: 523423 },
+    { text: 'Super good', id: 823423 },
+    { text: 'You are the best', id: 2039842 },
+    { text: 'Ramen is my fav food ever', id: 123523 },
+    { text: 'Nice Nice Nice!', id: 542328 }
+  ];
+  console.log('** Data Sets **');
+  console.table(people);
+  console.table(comments);
+
+  // Some and Every Checks
+  // Array.prototype.some()
+  console.log('is at least one person 19 or older?');
+  const isAdult = people.some(person => new Date().getFullYear() - person.year >= 19);
+  console.log({ isAdult });
+  // Array.prototype.every()
+  console.log('is everyone 19 or older?');
+  const allAdults = people.every(person => new Date().getFullYear() - person.year >= 19);
+  console.log({ allAdults });
+
+  // Array.prototype.find()
+  // Find is like filter, but instead returns just the one you are looking for
+  console.log('find the comment with the ID of 823423');
+  const comment = comments.find(comment => comment.id === 823423);
+  console.log(comment);
+
+  // Array.prototype.findIndex()
+  // Find the comment with this ID
+  console.log('delete the comment with the ID of 823423');
+  const index = comments.findIndex(comment => comment.id === 823423);
+  const newComments = [
+    ...comments.slice(0, index),
+    ...comments.slice(index + 1)
+  ];
+  console.table(newComments);
+}
 
 /*
  * ============== Flex Panels ==============
@@ -199,6 +244,16 @@ function flexpanels() {
 }
 
 /*
+ * ============== Type Ahead ==============
+*/
+function typeAheadCSS() {
+
+}
+function typeAhead() {
+
+}
+
+/*
  * ============== Dynamic Script Loading ==============
 */
 window.onload = () => {
@@ -218,13 +273,23 @@ window.onload = () => {
       cssvariablesCSS();
       cssvariables();
       break;
-    case '/04-arraycardio-one':
-      arrayCardioOne();
+    case '/04-arraycardio':
+      arrayCardio();
+      arrayCardioTwo();
       break;
     case '/05-flexpanels':
       flexpanelsCSS();
       flexpanels();
+    case '/06-typeahead':
+      typeAheadCSS();
+      typeAhead();
+      break;
     default:
       break;
   }
 }
+
+/*
+ * Notes
+*/
+// define html and body in window.onload and pass into functions
