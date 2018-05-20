@@ -39,3 +39,10 @@ exports.vanillatypeahead = (req, res) => {
     page: '06-typeahead'
   });
 }
+
+exports.vanillacanvas = (req, res) => {
+  res.render('vanilla/07-canvas', {
+    title: 'Canvas',
+    page: '/07-canvas'
+  });
+}

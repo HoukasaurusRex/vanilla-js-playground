@@ -254,6 +254,65 @@ function typeAhead() {
 }
 
 /*
+ * ============== Canvas ==============
+*/
+function canvas() {
+  const canvas = document.querySelector('#draw');
+  const ctx = canvas.getContext('2d');
+  canvas.height = window.innerHeight;
+  canvas.width = window.innerWidth;
+  ctx.lineJoin = 'round';
+  ctx.lineCap = 'round';
+  ctx.lineWidth = 100;
+
+  // GCO effects
+  // ctx.globalCompositeOperation = 'source-out';
+  // ctx.globalCompositeOperation = 'destination-over';
+  // ctx.globalCompositeOperation = 'destination-atop';
+  // ctx.globalCompositeOperation = 'luminosity';
+  ctx.globalCompositeOperation = 'color';
+  // ctx.globalCompositeOperation = 'hue';
+  // ctx.globalCompositeOperation = 'exclusion';
+
+  let isDrawing = false;
+  let lastX = 0;
+  let lastY = 0;
+  let hue = 0;
+  let direction = true;
+
+  function draw(e) {
+    if (!isDrawing) return;
+    // console.log(e);
+    ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
+    ctx.beginPath();
+    // Start from
+    ctx.moveTo(lastX, lastY);
+    // Go to
+    ctx.lineTo(e.offsetX, e.offsetY);
+    ctx.stroke();
+    [lastX, lastY] = [e.offsetX, e.offsetY];
+    // Color and Size
+    hue++;
+    if(hue >= 360) { hue = 0; }
+    if(ctx.lineWidth >= 100 || ctx.lineWidth <= 1) {
+      direction = !direction;
+    }
+    if(direction) {
+      ctx.lineWidth++;
+    } else {
+      ctx.lineWidth--;
+    }
+  }
+  canvas.addEventListener('mousedown', (e) => {
+    isDrawing = true;
+    [lastX, lastY] = [e.offsetX, e.offsetY];
+  });
+  canvas.addEventListener('mousemove', draw);
+  canvas.addEventListener('mouseup', () => isDrawing = false);
+  canvas.addEventListener('mouseout', () => isDrawing = false);
+}
+
+/*
  * ============== Dynamic Script Loading ==============
 */
 window.onload = () => {
@@ -284,6 +343,9 @@ window.onload = () => {
       typeAheadCSS();
       typeAhead();
       break;
+    case '/07-canvas':
+      canvas();
+      break;
     default:
       break;
   }
@@ -293,3 +355,4 @@ window.onload = () => {
  * Notes
 */
 // define html and body in window.onload and pass into functions
+// canvas: add user controls
