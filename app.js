@@ -42,6 +42,7 @@ app.get('/04-arraycardio', vanillajsController.vanillarrays);
 app.get('/05-flexpanels', vanillajsController.vanillaflexpanels);
 app.get('/06-typeahead', vanillajsController.vanillatypeahead);
 app.get('/07-canvas', vanillajsController.vanillacanvas);
+app.get('/08-consolecommander', vanillajsController.vanillaconsole);
 
 /**
   * Server listening

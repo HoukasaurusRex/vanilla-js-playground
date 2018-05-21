@@ -22,6 +22,8 @@ A collection of javascript projects served up on node with express and designed 
 - [ ] Complete 30 Unique Projects
 - [ ] Write HTML Blog Post for Array Pages
 - [ ] Include Blog Push Drawer on Vanilla Pages to Explain Page
+- [ ] Change out .hl class (and others) for html tags
+- [ ] Combine Developer Tools into Single Blog w/ Explanation
 
 ### What Next?
 - [ ] CSS Flexbox and Grid Integration

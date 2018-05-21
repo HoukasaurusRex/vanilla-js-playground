@@ -313,6 +313,83 @@ function canvas() {
 }
 
 /*
+ * ============== Console Commander ==============
+*/
+function consoleCommander() {
+  const dogs = [{ name: 'Snickers', age: 2 }, { name: 'Hugo', age: 8 }];
+
+  function makeGreen() {
+    const p = document.querySelector('p');
+    p.style.color = '#BADA55';
+    p.style.fontSize = '50px';
+  }
+
+  // Regular
+  console.log('hello');
+
+  // clearing
+  console.clear();
+
+  // Interpolated -- can be replaced with es6 backticks
+  console.log('hello, I am a %s interpolation', '💩');
+
+  // Styled
+  console.log('%c I am some sick nasty text', 'font-size: 20px; color: white; background: blue; text-shadow: 3px 3px red;');
+
+  // warning!
+  console.warn('Hey look out!');
+
+  // Error :|
+  console.error('OH FUCK');
+
+  // Info
+  console.info('Pooping after eating leaves more room for eating');
+
+  // Testing
+  const p = document.querySelector('p');
+  console.assert(p.classList.contains('bullshit'), 'That ain\'t right')
+
+  // Viewing DOM Elements
+  console.log(p);
+  console.dir(p);
+
+  // Grouping together
+  dogs.forEach((dog) => {
+    console.groupCollapsed(`${dog.name}`);
+    console.log(`This is ${dog.name}.`);
+    console.log(`He's ${dog.age} years old`);
+    console.log(`That's ${dog.age * 7} in dog years!`);
+    console.groupEnd(`${dog.name}`);
+  })
+
+  // counting
+  console.count('JT');
+  console.count('Val');
+  console.count('JT');
+  console.count('Val');
+  console.count('JT');
+  console.count('JT');
+  console.count('Val');
+  console.count('JT');
+  console.count('JT');
+  console.count('Val')
+  console.count('Val')
+  console.count('Val')
+
+  // timing
+  console.time('fetching some data');
+  fetch('https://api.github.com/users/pterobyte')
+    .then(data => data.json())
+    .then(data => {
+      console.timeEnd('fetching some data')
+      console.log(data);
+    });
+
+  // table
+  console.table(dogs);
+}
+
+/*
  * ============== Dynamic Script Loading ==============
 */
 window.onload = () => {
@@ -345,6 +422,9 @@ window.onload = () => {
       break;
     case '/07-canvas':
       canvas();
+      break;
+    case '/08-consolecommander':
+      consoleCommander();
       break;
     default:
       break;

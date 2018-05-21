@@ -46,3 +46,10 @@ exports.vanillacanvas = (req, res) => {
     page: '/07-canvas'
   });
 }
+
+exports.vanillaconsole = (req, res) => {
+  res.render('vanilla/08-consolecommander', {
+    title: 'Console Commander',
+    page: '/08-consolecommander'
+  });
+}
