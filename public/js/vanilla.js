@@ -390,6 +390,32 @@ function consoleCommander() {
 }
 
 /*
+ * ============== Multicheck ==============
+*/
+function multiCheck() {
+  const checkboxes = document.querySelectorAll('.inbox input[type="checkbox"]');
+  let lastChecked;
+  function handleCheck(e) {
+    // Check if shifkey down and box is checked
+    let inBetween = false;
+    if (e.shiftKey && this.checked) {
+      checkboxes.forEach(checkbox => {
+        console.log(checkbox);
+        if (checkbox === this || checkbox === lastChecked) {
+          inBetween = !inBetween;
+          console.log('inBetween triggered');
+        }
+        if (inBetween) {
+          checkbox.checked = true;
+        }
+      })
+    }
+    lastChecked = this;
+  }
+  checkboxes.forEach(checkbox => checkbox.addEventListener('click', handleCheck));
+}
+
+/*
  * ============== Dynamic Script Loading ==============
 */
 window.onload = () => {
@@ -425,6 +451,9 @@ window.onload = () => {
       break;
     case '/08-consolecommander':
       consoleCommander();
+      break;
+    case '/09-multicheck':
+      multiCheck();
       break;
     default:
       break;

@@ -53,3 +53,10 @@ exports.vanillaconsole = (req, res) => {
     page: '/08-consolecommander'
   });
 }
+
+exports.vanillamulticheck = (req, res) => {
+  res.render('vanilla/09-multicheck', {
+    title: 'Multicheck',
+    page: '/09-multicheck'
+  });
+}
