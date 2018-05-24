@@ -60,3 +60,10 @@ exports.vanillamulticheck = (req, res) => {
     page: '/09-multicheck'
   });
 }
+
+exports.vanillavideoplayer = (req, res) => {
+  res.render('vanilla/10-videoplayer', {
+    title: 'Video Player',
+    page: '/10-videoplayer'
+  });
+}

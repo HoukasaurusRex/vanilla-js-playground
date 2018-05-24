@@ -44,6 +44,7 @@ app.get('/06-typeahead', vanillajsController.vanillatypeahead);
 app.get('/07-canvas', vanillajsController.vanillacanvas);
 app.get('/08-consolecommander', vanillajsController.vanillaconsole);
 app.get('/09-multicheck', vanillajsController.vanillamulticheck);
+app.get('/10-videoplayer', vanillajsController.vanillavideoplayer);
 
 /**
   * Server listening
