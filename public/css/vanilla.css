@@ -104,11 +104,9 @@ kbd {
   background: var(--base);
   width: 60%;
 }
-
 .hl {
   color: var(--base);
 }
-
 .controls {
   margin-bottom: 50px;
 }
@@ -121,7 +119,6 @@ kbd {
   overflow: hidden;
   display: flex;
 }
-
 .panel {
   background:#6B0F9C;
   box-shadow:inset 0 0 0 5px rgba(255,255,255,0.1);
@@ -172,7 +169,6 @@ kbd {
 .panel p:nth-child(2) {
   font-size: 4em;
 }
-
 .panel.open {
   flex: 5;
   font-size:40px;
@@ -223,7 +219,6 @@ input.search {
   justify-content:space-between;
   text-transform: capitalize;
 }
-
 .suggestions li:nth-child(even) {
   transform: perspective(100px) rotateX(3deg) translateY(2px) scale(1.001);
   background: linear-gradient(to bottom,  #ffffff 0%,#EFEFEF 100%);
@@ -232,11 +227,9 @@ input.search {
   transform: perspective(100px) rotateX(-3deg) translateY(3px);
   background: linear-gradient(to top,  #ffffff 0%,#EFEFEF 100%);
 }
-
 span.population {
   font-size: 15px;
 }
-
 .search-hl {
   background: var(--base);
 }
