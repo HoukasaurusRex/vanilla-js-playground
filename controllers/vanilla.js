@@ -64,6 +64,15 @@ exports.vanillamulticheck = (req, res) => {
 exports.vanillavideoplayer = (req, res) => {
   res.render('vanilla/10-videoplayer', {
     title: 'Video Player',
-    page: '/10-videoplayer'
+    page: '/10-videoplayer',
+    class: 'page__videoplayer'
+  });
+}
+
+exports.vanillaslideonscroll = (req, res) => {
+  res.render('vanilla/11-slideonscroll', {
+    title: 'Slide on Scroll',
+    page: '/11-slideonscroll',
+    class: 'page__slideonscroll'
   });
 }

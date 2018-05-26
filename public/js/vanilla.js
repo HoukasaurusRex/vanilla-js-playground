@@ -3,7 +3,7 @@ function homeCSS() {
   const pressed = [];
   const secretCode = 'hellohal';
   html.style.setProperty("--main-background", "url(/assets/backgrounds/vanilla.jpg)");
-  
+
   window.addEventListener('keyup', (e) => {
     console.log(e.key);
     pressed.push(e.key);
@@ -497,6 +497,47 @@ function videoPlayer() {
 }
 
 /*
+ * ============== Slide on Scroll ==============
+*/
+function slideOnScroll() {
+  function debounce(func, wait = 20, immediate = true) {
+    let timeout;
+    return function() {
+      const context = this, args = arguments;
+      const later = function() {
+        timeout = null;
+        if (!immediate) func.apply(context, args);
+      };
+      const callNow = immediate && !timeout;
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+      if (callNow) func.apply(context, args);
+    };
+  }
+
+  const sliderImages = document.querySelectorAll('.slide-in');
+
+  function checkSlide(e) {
+    sliderImages.forEach((image) => {
+      // halfway through the image
+      const slideInAt = (window.scrollY + window.innerHeight) - (image.height / 2);
+      // bottom of image
+      const imageBottom = image.offsetTop + image.height;
+      const isHalfShown = slideInAt > image.offsetTop;
+      const isNotScrolledPast = window.scrollY < imageBottom;
+      console.log(`Image half shown: ${isHalfShown} -- Image not yet scrolled past: ${isNotScrolledPast}`);
+      if (isHalfShown && isNotScrolledPast) {
+        image.classList.add('active');
+      } else {
+        image.classList.remove('active');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', debounce(checkSlide));
+}
+
+/*
  * ============== Dynamic Script Loading ==============
 */
 window.onload = () => {
@@ -538,6 +579,9 @@ window.onload = () => {
       break;
     case '/10-videoplayer':
       videoPlayer();
+      break;
+    case '/11-slideonscroll':
+      slideOnScroll();
       break;
     default:
       break;

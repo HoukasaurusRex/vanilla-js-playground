@@ -284,6 +284,9 @@ input[type="checkbox"] {
 /**
   * ============== Video Player Styles ==============
 **/
+.page__videoplayer {
+  background: linear-gradient(135deg, #7c1599 0%,#921099 48%,#7e4ae8 100%);
+}
 .videoplayer {
   display: flex;
   justify-content: center;
@@ -428,6 +431,53 @@ input[type=range]::-moz-range-thumb {
   cursor: pointer;
 }
 /* Maybe clean with variables? */
+
+/**
+  * ============== Slide on Scroll ==============
+**/
+.page__slideonscroll {
+  box-sizing: border-box;
+  background: #ffc600;
+  font-family:'helvetica neue';
+  font-size: 20px;
+  font-weight: 200;
+  color: black;
+}
+
+.site-wrap {
+  max-width: 700px;
+  margin: 100px auto;
+  background:white;
+  padding:40px;
+  text-align: justify;
+}
+
+.align-left {
+  float:left;
+  margin-right:20px;
+}
+
+.align-right {
+  float:right;
+  margin-left:20px;
+}
+
+.slide-in {
+  opacity:0;
+  transition:all .5s;
+}
+
+.align-left.slide-in {
+  transform:translateX(-30%) scale(0.95);
+}
+.align-right.slide-in {
+  transform:translateX(30%) scale(0.95);
+}
+
+.slide-in.active {
+  opacity:1;
+  transform:translateX(0%) scale(1);
+}
 
 /* NOTE:
 /*
