@@ -10,7 +10,7 @@
   --body-padding: 0;
   --body-align: center;
   --body-justify: center;
-  --body-text-color: white;
+  --body-text-color: black;
   --body-text-weight: 10px;
   --body-text-size: 10px;
   --spacing: 10px;
@@ -30,22 +30,17 @@ html {
   background-size: cover;
   background: var(--main-background) bottom center;
   background-size: var(--main-background-size);
-  text-align: var(--main-text-align);
-  font-size: var(--main-text-size);
-  font-family: 'helvetica neue';
-  font-weight: 200;
 }
 body {
   min-height: 100vh;
-  background: var(--body-background);
   margin: var(--body-margin);
   padding: var(--body-padding);
   color: var(--body-text-color);
   font-family: sans-serif;
   font-weight: var(--body-text-weight);
-  font-size:var(--body-text-size);
   align-items: var(--body-align);
   justify-content: var(--body-justify);
+  text-align: center;
 }
 *, *:before, *:after {
   box-sizing: inherit;
@@ -54,7 +49,6 @@ body {
 /**
   * ============== Header ==============
 **/
-/* Nav container */
 nav .container {
   display: flex;
   flex-wrap: nowrap;

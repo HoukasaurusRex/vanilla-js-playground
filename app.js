@@ -46,6 +46,7 @@ app.get('/08-consolecommander', vanillajsController.vanillaconsole);
 app.get('/09-multicheck', vanillajsController.vanillamulticheck);
 app.get('/10-videoplayer', vanillajsController.vanillavideoplayer);
 app.get('/11-slideonscroll', vanillajsController.vanillaslideonscroll);
+app.get('/12-localstoragetapas', vanillajsController.vanillalocalstoragetapas);
 
 /**
   * Server listening

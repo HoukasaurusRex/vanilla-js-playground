@@ -189,6 +189,7 @@ function arrayCardio() {
   // .reduce() can create objects and return frequency of values
 }
 function arrayCardioTwo() {
+  console.clear();
   console.log('|======== Array Problem Set Two ========>');
   const people = [
     { name: 'Wes', year: 1988 },
@@ -232,6 +233,91 @@ function arrayCardioTwo() {
     ...comments.slice(index + 1)
   ];
   console.table(newComments);
+}
+function arrayCopyMethods() {
+console.clear();
+console.log('|======== Array Copy Methods ========>');
+// start with strings, numbers and booleans
+
+// Let's say we have an array
+const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
+
+// and we want to make a copy of it.
+
+// You might think we can just do something like this:
+let team = players;
+
+// however what happens when we update that array?
+team[3] = 'Slops';
+
+// now here is the problem!
+console.log(team, players);
+
+// oh no - we have edited the original array too!
+
+// Why? It's because that is an array reference, not an array copy. They both point to the same array!
+
+// So, how do we fix this? We take a copy instead!
+const fruits = ['apples', 'banaynays', 'jellybeans', 'greeps']
+
+// one way
+let trueFruits = fruits.slice();
+trueFruits[2] = 'creenburris';
+console.log(fruits, trueFruits);
+
+// or create a new array and concat the old one in
+let moreFruits = ['avocadoos'].concat(fruits);
+console.log(fruits, moreFruits);
+
+// or use the new ES6 Spread
+let sameFruits = [...fruits];
+console.log(fruits, sameFruits);
+
+// now when we update it, the original one isn't changed
+sameFruits[0] = 'pooples';
+console.log(fruits, sameFruits);
+
+// The same thing goes for objects, let's say we have a person object
+
+// with Objects
+const person = {
+  name: 'Wes Bos',
+  age: 80,
+  hobbies: {
+    outer: 'being a wes',
+    inner: 'being a bos'
+  }
+};
+
+// and think we make a copy:
+let newPerson = person;
+newPerson = {
+  name: 'McPoopy',
+  age: 2,
+  hobbies: {
+    erry: 'nothin',
+    day: 'at',
+    lyf: 'all'
+  }
+};
+console.log(person, newPerson);
+
+// how do we take a copy instead?
+let thisGuy = Object.assign({}, person);
+thisGuy = {
+  name: 'McPoopy',
+  age: 2,
+  hobbies: {
+    erry: 'nothin',
+    day: 'at',
+    lyf: 'all'
+  }
+};
+console.log(person, thisGuy);
+
+// We will hopefully soon see the object ...spread
+
+// Things to note - this is only 1 level deep - both for Arrays and Objects. lodash has a cloneDeep method, but you should think twice before using it.
 }
 
 /*
@@ -538,6 +624,60 @@ function slideOnScroll() {
 }
 
 /*
+ * ============== Local Storage Tapas ==============
+*/
+function localStorageTapas() {
+  const addItems = document.querySelector('.localtapas__add-items');
+  const platesList = document.querySelector('.localtapas__plates');
+  const plates = JSON.parse(localStorage.getItem('plates')) || [];
+
+  function addItem(e) {
+    e.preventDefault();
+    const text = (this.querySelector('[name=item]')).value;
+    const item = {
+      text,
+      done: false
+    };
+    plates.push(item);
+    populateList(plates, platesList);
+    localStorage.setItem('plates', JSON.stringify(plates));
+    this.reset();
+    console.log(item);
+  }
+
+  // why = []?
+  function populateList(items = [], itemsList) {
+    itemsList.innerHTML = items.map((item, i) => {
+      return `
+        <li>
+          <input type="checkbox" data-index=${i} id="items${i}" ${item.done ? 'checked' : ''}/>
+          <label for="items${i}">${item.text}</label>
+        </li>
+      `;
+    }).join('');
+  }
+
+  function toggleDone(e) {
+    if(!e.target.matches('input')) return;
+    const el = e.target;
+    const index = el.dataset.index;
+    plates[index].done = !plates[index].done;
+    localStorage.setItem('plates', JSON.stringify(plates));
+    populateList(plates, platesList);
+  }
+
+  addItems.addEventListener('submit', addItem);
+  platesList.addEventListener('click', toggleDone)
+
+  populateList(plates, platesList);
+
+  // TODO:
+  // check all button
+  // uncheck all button
+  // reset button
+}
+
+/*
  * ============== Dynamic Script Loading ==============
 */
 window.onload = () => {
@@ -560,6 +700,7 @@ window.onload = () => {
     case '/04-arraycardio':
       arrayCardio();
       arrayCardioTwo();
+      arrayCopyMethods();
       break;
     case '/05-flexpanels':
       flexpanelsCSS();
@@ -582,6 +723,9 @@ window.onload = () => {
       break;
     case '/11-slideonscroll':
       slideOnScroll();
+      break;
+    case '/12-localstoragetapas':
+      localStorageTapas();
       break;
     default:
       break;

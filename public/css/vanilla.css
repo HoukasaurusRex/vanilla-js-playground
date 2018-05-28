@@ -284,7 +284,7 @@ input[type="checkbox"] {
 /**
   * ============== Video Player Styles ==============
 **/
-.page__videoplayer {
+.videoplayer {
   background: linear-gradient(135deg, #7c1599 0%,#921099 48%,#7e4ae8 100%);
 }
 .videoplayer {
@@ -435,7 +435,7 @@ input[type=range]::-moz-range-thumb {
 /**
   * ============== Slide on Scroll ==============
 **/
-.page__slideonscroll {
+.slideonscroll {
   box-sizing: border-box;
   background: #ffc600;
   font-family:'helvetica neue';
@@ -478,6 +478,92 @@ input[type=range]::-moz-range-thumb {
   opacity:1;
   transform:translateX(0%) scale(1);
 }
+
+/**
+  * ============== Local Storage Tapas ==============
+**/
+.localtapas {
+  background:url('http://wes.io/hx9M/oh-la-la.jpg') center no-repeat;
+  background-size: cover;
+}
+.localtapas section {
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: Futura,"Trebuchet MS",Arial,sans-serif
+}
+.localtapas__container {
+  display: block;
+  margin: 8px;
+}
+.localtapas svg {
+  fill: white;
+  background: rgba(0,0,0,0.1);
+  padding: 20px;
+  border-radius: 50%;
+  width: 200px;
+  margin-bottom: 50px;
+}
+
+.localtapas__wrapper {
+  padding: 20px;
+  max-width: 350px;
+  background: rgba(255,255,255,0.95);
+  box-shadow: 0 0 0 10px rgba(0,0,0,0.1);
+}
+
+.localtapas__wrapper > h2 {
+  text-align: center;
+  margin: 0;
+  font-weight: 200;
+}
+
+.localtapas__plates {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  list-style: none;
+}
+
+.localtapas__plates li {
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+  padding: 10px 0;
+  font-weight: 100;
+  display: flex;
+}
+
+.localtapas__plates label {
+  flex:1;
+  cursor: pointer;
+
+}
+
+.localtapas__plates input {
+  display: none;
+}
+
+.localtapas__plates input + label:before {
+  content: '⬜️';
+  margin-right: 10px;
+}
+
+.localtapas__plates input:checked + label:before {
+  content: '🌮';
+}
+
+.localtapas__add-items {
+  margin-top: 20px;
+}
+
+.localtapas__add-items input {
+  padding:10px;
+  outline:0;
+  border:1px solid rgba(0,0,0,0.1);
+}
+
 
 /* NOTE:
 /*
