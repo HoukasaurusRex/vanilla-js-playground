@@ -1,4 +1,4 @@
-function homeCSS() {
+function home() {
   const html = document.documentElement;
   const pressed = [];
   const secretCode = 'hellohal';
@@ -35,7 +35,7 @@ function homeCSS() {
     console.log(pressed);
     if (pressed.join('').includes(secretCode)) {
       alert('Hello, Dave');
-      cornify_add();
+      hero.style.setProperty("background", "url(/assets/backgrounds/hal9000.png)");
     }
   });
 }
@@ -707,7 +707,7 @@ function localStorageTapas() {
 window.onload = () => {
   switch (window.location.pathname) {
     case '/':
-      homeCSS();
+      home();
       break;
     case '/01-jsdrumkit':
       drumkitCSS();
