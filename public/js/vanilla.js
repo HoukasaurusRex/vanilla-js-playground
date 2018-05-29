@@ -1,9 +1,9 @@
 function home() {
   const html = document.documentElement;
-  const pressed = [];
-  const secretCode = 'hellohal';
   const hero = document.querySelector('.home');
   const text = hero.querySelector('h1');
+  const kickass = `javascript:var%20s%20=%20document.createElement('script');s.type='text/javascript';document.body.appendChild(s);s.src='http://erkie.github.com/asteroids.min.js';void(0);`
+  const pressed = [];
 
   function shadow(e) {
     const walk = 100; // 100px
@@ -26,18 +26,24 @@ function home() {
     `;
     // NOTE: add canvas styling
   }
-
-  hero.addEventListener('mousemove', shadow);
-  window.addEventListener('keyup', (e) => {
+  function secretCode(e) {
+    const helloHal = 'hellohal';
+    const konami = 'ArrowUpArrowUpArrowDownArrowDownArrowLeftArrowRightArrowLeftArrowRightba'
     console.log(e.key);
     pressed.push(e.key);
-    pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length);
-    console.log(pressed);
-    if (pressed.join('').includes(secretCode)) {
+    pressed.splice(-10, pressed.length - 10);
+    console.log(pressed.join(''));
+    if (pressed.join('').includes(helloHal)) {
       alert('Hello, Dave');
       hero.style.setProperty("background", "url(/assets/backgrounds/hal9000.png)");
+    } else if (pressed.join('').includes(konami)) {
+      alert('Break It All');
+      window.location = kickass;
     }
-  });
+  }
+
+  hero.addEventListener('mousemove', shadow);
+  window.addEventListener('keyup', secretCode);
 }
 
 /*
