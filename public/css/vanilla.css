@@ -25,7 +25,6 @@
   align-items: center;
   justify-content: space-between;
 }
-
 .key {
   border: .4rem solid black;
   border-radius: .5rem;
@@ -39,18 +38,15 @@
   background: rgba(0,0,0,0.4);
   text-shadow: 0 0 .5rem black;
 }
-
 .playing {
   transform: scale(1.1);
   border-color: #ffc600;
   box-shadow: 0 0 1rem #ffc600;
 }
-
 kbd {
   display: block;
   font-size: 4rem;
 }
-
 .sound {
   font-size: 1.2rem;
   text-transform: uppercase;
@@ -75,14 +71,12 @@ kbd {
     inset 0 0 10px black,
     0 0 10px rgba(0,0,0,0.2);
 }
-
 .clock-face {
   position: relative;
   width: 100%;
   height: 100%;
   transform: translateY(-3px); /* account for the height of the clock hands */
 }
-
 .hand {
   width:50%;
   height:6px;
@@ -137,13 +131,11 @@ kbd {
   display: flex;
   flex-direction: column;
 }
-
 .panel1 { background-image:url(https://source.unsplash.com/gYl-UtwNg_I/1500x1500); }
 .panel2 { background-image:url(https://source.unsplash.com/rFKUFzjPYiQ/1500x1500); }
 .panel3 { background-image:url(https://images.unsplash.com/photo-1465188162913-8fb5709d6d57?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&cs=tinysrgb&w=1500&h=1500&fit=crop&s=967e8a713a4e395260793fc8c802901d); }
 .panel4 { background-image:url(https://source.unsplash.com/ITjiVXcwVng/1500x1500); }
 .panel5 { background-image:url(https://source.unsplash.com/3MNzGlQM7qs/1500x1500); }
-
 /* Flex Children */
 .panel > * {
   margin:0;
@@ -154,12 +146,10 @@ kbd {
   align-items: center;
   display: flex;
 }
-
 .panel > *:first-child { transform: translateY(-100%); }
 .panel.open-active > *:first-child { transform: translateY(0); }
 .panel > *:last-child { transform: translateY(100%); }
 .panel.open-active > *:last-child { transform: translateY(0); }
-
 .panel p {
   text-transform: uppercase;
   font-family: 'Kaushan Script', cursive;
@@ -181,7 +171,6 @@ kbd {
   max-width:400px;
   margin:50px auto;
 }
-
 input.search {
   width: 100%;
   padding: 20px;
@@ -248,28 +237,22 @@ span.population {
   border-radius:5px;
   box-shadow:10px 10px 0 rgba(0,0,0,0.1);
 }
-
 .item {
   display: flex;
   align-items: center;
   border-bottom: 1px solid #F1F1F1;
 }
-
 .item:last-child {
   border-bottom:0;
 }
-
-
 input:checked + p {
   background: #F9F9F9;
   text-decoration: line-through;
 }
-
 input[type="checkbox"] {
   margin: 20px;
   width: auto;
 }
-
 .inbox > .item p {
   margin: 0;
   padding: 20px;
@@ -292,7 +275,6 @@ input[type="checkbox"] {
   justify-content: center;
   align-items: center;
 }
-
 .player {
   max-width:750px;
   border:5px solid rgba(0,0,0,0.2);
@@ -301,22 +283,18 @@ input[type="checkbox"] {
   font-size: 0;
   overflow: hidden;
 }
-
 /* This css is only applied when fullscreen is active. */
 .player:fullscreen {
   max-width: none;
   width: 100%;
 }
-
 .player:-webkit-full-screen {
   max-width: none;
   width: 100%;
 }
-
 .player__video {
   width: 100%;
 }
-
 .player__button {
   background:none;
   border:0;
@@ -328,56 +306,48 @@ input[type="checkbox"] {
   cursor:pointer;
   max-width:50px;
 }
-
 .player__button:focus {
   border-color: #ffc600;
 }
-
 .player__slider {
   width:10px;
   height:30px;
 }
-
 .player__controls {
-  display:flex;
+  display: flex;
   position: absolute;
   bottom: 0;
   width: 100%;
   transform: translateY(100%) translateY(-5px);
   transition:all .3s;
-  flex-wrap:wrap;
-  background:rgba(0,0,0,0.1);
+  flex-wrap: wrap;
+  background: rgba(0,0,0,0.1);
 }
-
 .player:hover .player__controls {
   transform: translateY(0);
 }
-
 .player:hover .progress {
-  height:15px;
+  height: 15px;
 }
-
 .player__controls > * {
-  flex:1;
+  flex: 1;
 }
-
 .progress {
-  flex:10;
+  flex: 10;
   position: relative;
   /* Relative so the click event 'offsetX' is relative to bar width */
-  display:flex;
-  flex-basis:100%;
-  height:5px;
-  transition:height 0.3s;
-  background:rgba(0,0,0,0.5);
-  cursor:ew-resize;
+  display: flex;
+  flex-basis: 100%;
+  height: 5px;
+  transition: height 0.3s;
+  background: rgba(0,0,0,0.5);
+  cursor: ew-resize;
 }
-
 .progress__filled {
-  width:50%;
-  background:#ffc600;
-  flex:0;
-  flex-basis:50%;
+  width: 50%;
+  background: #ffc600;
+  flex: 0;
+  flex-basis: 50%;
 }
 
 /* unholy css to style input type="range" */
@@ -443,7 +413,6 @@ input[type=range]::-moz-range-thumb {
   font-weight: 200;
   color: black;
 }
-
 .site-wrap {
   max-width: 700px;
   margin: 100px auto;
@@ -451,29 +420,24 @@ input[type=range]::-moz-range-thumb {
   padding:40px;
   text-align: justify;
 }
-
 .align-left {
   float:left;
   margin-right:20px;
 }
-
 .align-right {
   float:right;
   margin-left:20px;
 }
-
 .slide-in {
   opacity:0;
   transition:all .5s;
 }
-
 .align-left.slide-in {
   transform:translateX(-30%) scale(0.95);
 }
 .align-right.slide-in {
   transform:translateX(30%) scale(0.95);
 }
-
 .slide-in.active {
   opacity:1;
   transform:translateX(0%) scale(1);
@@ -507,63 +471,79 @@ input[type=range]::-moz-range-thumb {
   width: 200px;
   margin-bottom: 50px;
 }
-
 .localtapas__wrapper {
   padding: 20px;
   max-width: 350px;
   background: rgba(255,255,255,0.95);
   box-shadow: 0 0 0 10px rgba(0,0,0,0.1);
 }
-
 .localtapas__wrapper > h2 {
   text-align: center;
   margin: 0;
   font-weight: 200;
 }
-
 .localtapas__plates {
   margin: 0;
   padding: 0;
   text-align: left;
   list-style: none;
 }
-
 .localtapas__plates li {
   border-bottom: 1px solid rgba(0,0,0,0.2);
   padding: 10px 0;
   font-weight: 100;
   display: flex;
 }
-
 .localtapas__plates label {
-  flex:1;
+  flex: 1;
   cursor: pointer;
-
 }
-
 .localtapas__plates input {
   display: none;
 }
-
 .localtapas__plates input + label:before {
   content: '⬜️';
   margin-right: 10px;
 }
-
 .localtapas__plates input:checked + label:before {
   content: '🌮';
 }
-
 .localtapas__add-items {
   margin-top: 20px;
 }
-
 .localtapas__add-items input {
   padding:10px;
   outline:0;
   border:1px solid rgba(0,0,0,0.1);
 }
 
+/**
+  * ============== Sort Bands ==============
+**/
+.sortbands {
+  background: url("https://source.unsplash.com/nDqA4d5NL0k/2000x2000");
+  background-size: cover;
+}
+.sortbands section {
+  margin: 50px 0;
+}
+#bands {
+  list-style: inside square;
+  font-size: 20px;
+  background: white;
+  width: 500px;
+  margin: 20px auto;
+  padding: 0;
+  box-shadow: 0 0 0 20px rgba(0, 0, 0, 0.05);
+}
+#bands li {
+  border-bottom: 1px solid #efefef;
+  padding: 20px;
+  list-style-type: none;
+}
+#bands li:last-child {
+  border-bottom: 0;
+}
 
 /* NOTE:
 /*

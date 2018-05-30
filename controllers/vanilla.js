@@ -84,3 +84,11 @@ exports.vanillalocalstoragetapas = (req, res) => {
     class: 'localtapas'
   });
 }
+
+exports.vanillasortbands = (req, res) => {
+  res.render('vanilla/13-sortbands', {
+    title: 'Sort Bands',
+    page: '/13-sortbands',
+    class: 'sortbands'
+  });
+}

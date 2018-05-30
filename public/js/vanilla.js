@@ -708,6 +708,30 @@ function localStorageTapas() {
 }
 
 /*
+ * ============== Sort Bands ==============
+*/
+function sortBands() {
+  const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
+
+  function strip(name) {
+    // regexplanation:
+    /*  //   -> contains regex
+     *  ^()  -> "starts with"
+     *  |    -> "or"
+     *  i    -> case "insensitive"
+     *  , '' -> replace with ''
+    */
+    return name.replace(/^(a |the |an )/i, '').trim();
+  }
+  const bandsSorted = bands.sort((a, b) => strip(a) > strip(b) ? 1 : -1);
+  document.querySelector('#bands').innerHTML =
+    bandsSorted
+      .map(band => `<li>${band}</li>`)
+      .join('');
+  console.log(bandsSorted);
+}
+
+/*
  * ============== Dynamic Script Loading ==============
 */
 window.onload = () => {
@@ -757,13 +781,16 @@ window.onload = () => {
     case '/12-localstoragetapas':
       localStorageTapas();
       break;
+    case '/13-sortbands':
+      sortBands();
+      break;
     default:
       break;
   }
 }
 
 /*
- * Notes
+ * NOTE:
 */
 // define html and body in window.onload and pass into functions
 // canvas: add user controls
