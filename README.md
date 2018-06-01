@@ -35,4 +35,5 @@ A collection of javascript projects served up on node with express and designed 
 - [ ] Custom Domain
 - [ ] Static Blog Integration
 - [ ] Add Mocha Testing
+- [ ] Create Electron App
 - [ ] Project Roadmap

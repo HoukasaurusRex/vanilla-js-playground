@@ -674,7 +674,6 @@ function localStorageTapas() {
     this.reset();
     console.log(item);
   }
-
   // why = []?
   function populateList(items = [], itemsList) {
     itemsList.innerHTML = items.map((item, i) => {
@@ -686,7 +685,6 @@ function localStorageTapas() {
       `;
     }).join('');
   }
-
   function toggleDone(e) {
     if(!e.target.matches('input')) return;
     const el = e.target;
@@ -729,6 +727,111 @@ function sortBands() {
       .map(band => `<li>${band}</li>`)
       .join('');
   console.log(bandsSorted);
+}
+
+/*
+ * ============== Webcam ==============
+*/
+function webcam() {
+  const video = document.querySelector('.player');
+  const canvas = document.querySelector('.photo');
+  const ctx = canvas.getContext('2d');
+  const strip = document.querySelector('.strip');
+  const snap = document.querySelector('.snap');
+  let pixelFunction = undefined;
+
+  function getVideo() {
+    navigator.mediaDevices
+      .getUserMedia({ video: true, audio: false })
+      .then((localMediaStream) => {
+        video.srcObject = localMediaStream;
+        video.play();
+      })
+      .catch((err) => {
+        console.error('Video cannot capture without access: ', err);
+      });
+  }
+  function paintToCanvas() {
+    const width = video.videoWidth;
+    const height = video.videoHeight;
+    canvas.width = width;
+    canvas.height = height;
+    console.log('Painted');
+
+    return setInterval(() => {
+      ctx.drawImage(video, 0, 0, width, height);
+      // take out pixels
+      let pixels = ctx.getImageData(0, 0, width, height);
+      // mess with them
+      if (pixelFunction) { pixels = pixelFunction(pixels); }
+      // ctx.globalAlpha = 0.3;
+
+      // put them back
+      ctx.putImageData(pixels, 0, 0);
+    }, 16);
+  }
+  function takePhoto() {
+    // play capture sound
+    snap.currentTime = 0;
+    snap.play();
+    // take data out of Canvas
+    const data = canvas.toDataURL('image/jpeg');
+    const link = document.createElement('a');
+    link.href = data;
+    link.setAttribute('download', 'handsome');
+    link.innerHTML = `<img src="${data}" alt="Pretty Face" />`;
+    strip.insertBefore(link, strip.firstChild);
+  }
+  function redEffect(px) {
+    for (let i = 0; i < px.data.length; i += 4) {
+      // sets each pixel to different color value
+      px.data[i + 0] = px.data[i + 0] + 50 // red
+      px.data[i + 1] = px.data[i + 1] - 30 // green
+      px.data[i + 2] = px.data[i + 2] * 0.5 // blue
+    }
+    return px;
+  }
+  function rgbSplit(px) {
+    for (let i = 0; i < px.data.length; i += 4) {
+      // sets each pixel to future/past pixel value
+      px.data[i - 200] = px.data[i + 0] // red
+      px.data[i + 300] = px.data[i + 1] // green
+      px.data[i - 150] = px.data[i + 2] // blue
+    }
+    return px;
+  }
+  function greenScreen(px) {
+    const levels = {};
+    document.querySelectorAll('.rgb input').forEach((input) => {
+      levels[input.name] = input.value;
+    });
+    for (let i = 0; i < px.data.length; i += 4) {
+      // sets each pixel to variable
+      red = px.data[i + 0];
+      green = px.data[i + 1];
+      blue = px.data[i + 2];
+      alpha = px.data[i + 3];
+      if (
+        red >= levels.rmin
+        && green >= levels.gmin
+        && blue >= levels.bmin
+        && red <= levels.rmax
+        && green <= levels.gmax
+        && blue <= levels.bmax
+      ) {
+        px.data[i + 3] = 0; // set transparent and take out pixel
+      }
+    }
+    return px;
+  }
+  getVideo();
+  video.addEventListener('canplay', paintToCanvas);
+  return {
+    takePhoto,
+    redEffect,
+    rgbSplit,
+    greenScreen
+  };
 }
 
 /*
@@ -783,6 +886,10 @@ window.onload = () => {
       break;
     case '/13-sortbands':
       sortBands();
+      break;
+    case '/14-webcam':
+      window.photobooth = webcam();
+      // webcam();
       break;
     default:
       break;

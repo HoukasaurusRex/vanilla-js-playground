@@ -92,3 +92,11 @@ exports.vanillasortbands = (req, res) => {
     class: 'sortbands'
   });
 }
+
+exports.vanillawebcam = (req, res) => {
+  res.render('vanilla/14-webcam', {
+    title: 'Photobooth',
+    page: '/14-webcam',
+    class: 'webcam'
+  });
+}

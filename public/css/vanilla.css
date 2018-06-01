@@ -101,7 +101,7 @@ kbd {
 .hl {
   color: var(--base);
 }
-.controls {
+.cssvariables .controls {
   margin-bottom: 50px;
 }
 
@@ -245,11 +245,11 @@ span.population {
 .item:last-child {
   border-bottom:0;
 }
-input:checked + p {
+.multicheck input:checked + p {
   background: #F9F9F9;
   text-decoration: line-through;
 }
-input[type="checkbox"] {
+.multicheck input[type="checkbox"] {
   margin: 20px;
   width: auto;
 }
@@ -270,12 +270,12 @@ input[type="checkbox"] {
 .videoplayer {
   background: linear-gradient(135deg, #7c1599 0%,#921099 48%,#7e4ae8 100%);
 }
-.videoplayer {
+.videoplayer__section {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.player {
+.videoplayer__player {
   max-width:750px;
   border:5px solid rgba(0,0,0,0.2);
   box-shadow:0 0 20px rgba(0,0,0,0.2);
@@ -284,11 +284,11 @@ input[type="checkbox"] {
   overflow: hidden;
 }
 /* This css is only applied when fullscreen is active. */
-.player:fullscreen {
+.videoplayer__player:fullscreen {
   max-width: none;
   width: 100%;
 }
-.player:-webkit-full-screen {
+.videoplayer__player:-webkit-full-screen {
   max-width: none;
   width: 100%;
 }
@@ -323,10 +323,10 @@ input[type="checkbox"] {
   flex-wrap: wrap;
   background: rgba(0,0,0,0.1);
 }
-.player:hover .player__controls {
+.videoplayer__player:hover .player__controls {
   transform: translateY(0);
 }
-.player:hover .progress {
+.videoplayer__player:hover .progress {
   height: 15px;
 }
 .player__controls > * {
@@ -352,16 +352,16 @@ input[type="checkbox"] {
 
 /* unholy css to style input type="range" */
 
-input[type=range] {
+.player__controls input[type=range] {
   -webkit-appearance: none;
   background:transparent;
   width: 100%;
   margin: 0 5px;
 }
-input[type=range]:focus {
+.player__controls input[type=range]:focus {
   outline: none;
 }
-input[type=range]::-webkit-slider-runnable-track {
+.player__controls input[type=range]::-webkit-slider-runnable-track {
   width: 100%;
   height: 8.4px;
   cursor: pointer;
@@ -370,7 +370,7 @@ input[type=range]::-webkit-slider-runnable-track {
   border-radius: 1.3px;
   border: 0.2px solid rgba(1, 1, 1, 0);
 }
-input[type=range]::-webkit-slider-thumb {
+.player__controls input[type=range]::-webkit-slider-thumb {
   height: 15px;
   width: 15px;
   border-radius: 50px;
@@ -380,10 +380,10 @@ input[type=range]::-webkit-slider-thumb {
   margin-top: -3.5px;
   box-shadow:0 0 2px rgba(0,0,0,0.2);
 }
-input[type=range]:focus::-webkit-slider-runnable-track {
+.player__controls input[type=range]:focus::-webkit-slider-runnable-track {
   background: #bada55;
 }
-input[type=range]::-moz-range-track {
+.player__controls input[type=range]::-moz-range-track {
   width: 100%;
   height: 8.4px;
   cursor: pointer;
@@ -392,7 +392,7 @@ input[type=range]::-moz-range-track {
   border-radius: 1.3px;
   border: 0.2px solid rgba(1, 1, 1, 0);
 }
-input[type=range]::-moz-range-thumb {
+.player__controls input[type=range]::-moz-range-thumb {
   box-shadow: 0 0 0 rgba(0, 0, 0, 0), 0 0 0 rgba(13, 13, 13, 0);
   height: 15px;
   width: 15px;
@@ -416,8 +416,8 @@ input[type=range]::-moz-range-thumb {
 .site-wrap {
   max-width: 700px;
   margin: 100px auto;
-  background:white;
-  padding:40px;
+  background: white;
+  padding: 40px;
   text-align: justify;
 }
 .align-left {
@@ -544,6 +544,55 @@ input[type=range]::-moz-range-thumb {
 #bands li:last-child {
   border-bottom: 0;
 }
+
+/**
+  * ============== Webcam ==============
+**/
+.photobooth {
+  background: white;
+  max-width: 150rem;
+  margin: 0 auto;
+  border-radius: 2px;
+}
+/*clearfix*/
+.photobooth:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.photobooth__controls {
+  background-color: black;
+  color: white;
+  padding-bottom: 15px;
+}
+.photo {
+  width: 100%;
+  float: left;
+}
+.player {
+  position: absolute;
+  top: 100px;
+  right: 20px;
+  width: 200px;
+}
+/*
+  Strip!
+*/
+.strip {
+  padding: 2rem;
+}
+.strip img {
+  width: 100px;
+  overflow-x: scroll;
+  padding: 0.8rem 0.8rem 2.5rem 0.8rem;
+  box-shadow: 0 0 3px rgba(0,0,0,0.2);
+  background: white;
+}
+.strip a:nth-child(5n+1) img { transform: rotate(10deg); }
+.strip a:nth-child(5n+2) img { transform: rotate(-2deg); }
+.strip a:nth-child(5n+3) img { transform: rotate(8deg); }
+.strip a:nth-child(5n+4) img { transform: rotate(-11deg); }
+.strip a:nth-child(5n+5) img { transform: rotate(12deg); }
 
 /* NOTE:
 /*
