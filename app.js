@@ -54,6 +54,7 @@ app.get('/11-slideonscroll', vanillajsController.vanillaslideonscroll);
 app.get('/12-localstoragetapas', vanillajsController.vanillalocalstoragetapas);
 app.get('/13-sortbands', vanillajsController.vanillasortbands);
 app.get('/14-webcam', vanillajsController.vanillawebcam);
+app.get('/15-speechdetection', vanillajsController.vanillaspeechdetection);
 
 /**
   * Server listening

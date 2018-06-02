@@ -835,6 +835,47 @@ function webcam() {
 }
 
 /*
+ * ============== Speech Detection ==============
+*/
+function speechDetection() {
+  // setting speech recognition name to be same regardless of browser
+  window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  // create new instance of SpeechRecognition
+  const recognition = new SpeechRecognition();
+  // displays results as you go along
+  recognition.interimResults = true;
+
+  const words = document.querySelector('.words');
+  let p = document.createElement('p');
+  words.appendChild(p);
+
+  recognition.addEventListener('result', (e) => {
+    // convert to array, grab nested text, then join to string
+    const transcript = Array.from(e.results)
+      .map(result => result[0])
+      .map(result => result.transcript)
+      .join('');
+
+    p.textContent = transcript;
+    if (e.results[0].isFinal) {
+      p = document.createElement('p');
+      words.appendChild(p);
+    }
+    if (transcript.includes('take me home')) {
+      window.location.pathname = '/';
+    } else if (transcript.includes('reload the page')) {
+      window.location.reload(true);
+    }
+    // NOTE: debounce listener
+    console.log(transcript);
+  });
+
+  recognition.addEventListener('end', recognition.start);
+
+  recognition.start();
+}
+
+/*
  * ============== Dynamic Script Loading ==============
 */
 window.onload = () => {
@@ -889,7 +930,9 @@ window.onload = () => {
       break;
     case '/14-webcam':
       window.photobooth = webcam();
-      // webcam();
+      break;
+    case '/15-speechdetection':
+      speechDetection();
       break;
     default:
       break;
@@ -901,3 +944,5 @@ window.onload = () => {
 */
 // define html and body in window.onload and pass into functions
 // canvas: add user controls
+// webcam: add filter Functions
+// speechRecognition: listen for commands and run functions (e.g. get weather)

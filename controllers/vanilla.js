@@ -100,3 +100,11 @@ exports.vanillawebcam = (req, res) => {
     class: 'webcam'
   });
 }
+
+exports.vanillaspeechdetection = (req, res) => {
+  res.render('vanilla/15-speechdetection', {
+    title: 'Speech Detection',
+    page: '/15-speechdetection',
+    class: 'speechdetection'
+  });
+}
