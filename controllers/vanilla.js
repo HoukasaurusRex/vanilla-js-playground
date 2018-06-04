@@ -108,3 +108,11 @@ exports.vanillaspeechdetection = (req, res) => {
     class: 'speechdetection'
   });
 }
+
+exports.vanillaspeedometer = (req, res) => {
+  res.render('vanilla/16-speedometer', {
+    title: 'speedometer',
+    page: '/16-speedometer',
+    class: 'speedometer'
+  });
+}

@@ -1,3 +1,5 @@
+const https = require('https');
+const fs = require('fs');
 const express = require('express');
 const exphbs  = require('express-handlebars');
 
@@ -7,8 +9,16 @@ const exphbs  = require('express-handlebars');
 const homeController = require('./controllers/home');
 const vanillajsController = require('./controllers/vanilla');
 
-const port = process.env.PORT || 3000;
+const options = {
+    key: fs.readFileSync( './localhost.key' ),
+    cert: fs.readFileSync( './localhost.cert' ),
+    requestCert: false,
+    rejectUnauthorized: false
+};
+
 const app = express();
+const port = process.env.PORT || 3000;
+const server = https.createServer(options, app);
 
 /**
  * Express configuration
@@ -55,12 +65,13 @@ app.get('/12-localstoragetapas', vanillajsController.vanillalocalstoragetapas);
 app.get('/13-sortbands', vanillajsController.vanillasortbands);
 app.get('/14-webcam', vanillajsController.vanillawebcam);
 app.get('/15-speechdetection', vanillajsController.vanillaspeechdetection);
+app.get('/16-speedometer', vanillajsController.vanillaspeedometer);
 
 /**
   * Server listening
 **/
-app.listen(port, () => {
-  console.log(`Server is listening on port ${port}...`);
+server.listen(port, () => {
+  console.log(`Server is listening on port ${server.address().port}...`);
 });
 
 module.exports = app;

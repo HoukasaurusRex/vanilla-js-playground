@@ -876,6 +876,23 @@ function speechDetection() {
 }
 
 /*
+ * ============== Speedometer ==============
+*/
+function speedometer() {
+  const arrow = document.querySelector('.arrow');
+  const speed = document.querySelector('.speed-value');
+
+  navigator.geolocation.watchPosition((data) => {
+    console.log(data);
+    speed.textContent = data.coords.speed; // set text of span to speed data value
+    arrow.style.transform = `rotate(${data.coords.heading}deg)` // set transform style property on svg to data degrees
+  }, (err) => {
+    console.error(err);
+    alert('This app requires access to your location ¯\_(ツ)_/¯');
+  });
+}
+
+/*
  * ============== Dynamic Script Loading ==============
 */
 window.onload = () => {
@@ -933,6 +950,9 @@ window.onload = () => {
       break;
     case '/15-speechdetection':
       speechDetection();
+      break;
+    case '/16-speedometer':
+      speedometer();
       break;
     default:
       break;

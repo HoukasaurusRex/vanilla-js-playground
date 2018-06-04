@@ -7,6 +7,9 @@
     "start": "node app.js",
     "watch": "nodemon app.js -e js,handlebars"
   },
+  "engines": {
+    "node": "8.11.1"
+  },
   "author": "JT Houk",
   "license": "ISC",
   "dependencies": {
