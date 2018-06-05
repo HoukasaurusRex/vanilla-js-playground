@@ -111,8 +111,16 @@ exports.vanillaspeechdetection = (req, res) => {
 
 exports.vanillaspeedometer = (req, res) => {
   res.render('vanilla/16-speedometer', {
-    title: 'speedometer',
+    title: 'Speedometer',
     page: '/16-speedometer',
     class: 'speedometer'
+  });
+}
+
+exports.vanillamagicmovinghighlight = (req, res) => {
+  res.render('vanilla/17-magic-moving-highlight', {
+    title: 'Magic Moving Highlight',
+    page: '/17-vanillamagicmovinghighlight',
+    class: 'magichighlight'
   });
 }

@@ -893,6 +893,31 @@ function speedometer() {
 }
 
 /*
+ * ============== Magic Moving Highlight ==============
+*/
+function magicMovingHighlight() {
+  const triggers = document.querySelectorAll('a');
+  const highlight = document.createElement('span');
+
+  highlight.classList.add('highlight');
+  document.body.append(highlight);
+
+  function highlightLink() {
+    const linkCoords = this.getBoundingClientRect(); // magic sauce
+    const coords = {
+      width: linkCoords.width,
+      height: linkCoords.height,
+      left: linkCoords.left + window.scrollX,
+      top: linkCoords.top + window.scrollY,
+    };
+    highlight.style.width = `${coords.width}px`;
+    highlight.style.height = `${coords.height}px`;
+    highlight.style.transform = `translate(${coords.left}px, ${coords.top}px)`;
+  }
+  triggers.forEach(a => a.addEventListener('mouseenter', highlightLink));
+}
+
+/*
  * ============== Dynamic Script Loading ==============
 */
 window.onload = () => {
@@ -953,6 +978,9 @@ window.onload = () => {
       break;
     case '/16-speedometer':
       speedometer();
+      break;
+    case '/17-magic-moving-highlight':
+      magicMovingHighlight();
       break;
     default:
       break;

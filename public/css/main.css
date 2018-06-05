@@ -2,8 +2,6 @@
   * ============== Variables ==============
 **/
 :root {
-  --main-background: black;
-  --main-background-size: cover;
   --main-text-align: center;
   --main-text-size: 10px;
   --body-margin: 0;
@@ -28,8 +26,6 @@ html {
   height: 100%
   box-sizing: border-box;
   background-size: cover;
-  background: var(--main-background) bottom center;
-  background-size: var(--main-background-size);
 }
 body {
   min-height: 100vh;
