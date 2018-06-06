@@ -3,7 +3,6 @@
 **/
 :root {
   --main-text-align: center;
-  --main-text-size: 10px;
   --body-margin: 0;
   --body-padding: 0;
   --body-align: center;
@@ -33,10 +32,8 @@ body {
   padding: var(--body-padding);
   color: var(--body-text-color);
   font-family: sans-serif;
-  font-weight: var(--body-text-weight);
   align-items: var(--body-align);
   justify-content: var(--body-justify);
-  text-align: center;
 }
 *, *:before, *:after {
   box-sizing: inherit;

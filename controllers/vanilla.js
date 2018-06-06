@@ -124,3 +124,11 @@ exports.vanillamagicmovinghighlight = (req, res) => {
     class: 'magichighlight'
   });
 }
+
+exports.vanillatexttospeech = (req, res) => {
+  res.render('vanilla/18-texttospeech', {
+    title: 'Voiceinator',
+    page: '/18-texttospeech',
+    class: 'texttospeech'
+  });
+}

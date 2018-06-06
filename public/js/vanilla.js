@@ -918,6 +918,50 @@ function magicMovingHighlight() {
 }
 
 /*
+ * ============== Text to Speech ==============
+*/
+function textToSpeech() {
+  const msg = new SpeechSynthesisUtterance(); // what will the speech say?
+  let voices = [];
+  const voicesDropdown = document.querySelector('[name="voice"]');
+  const options = document.querySelectorAll('[type="range"], [name="text"]');
+  const speakButton = document.querySelector('#speak');
+  const stopButton = document.querySelector('#stop');
+  msg.text = document.querySelector('[name="text"]').value;
+
+  function populateVoices() {
+    voices = this.getVoices();
+    voicesDropdown.innerHTML = voices
+      .map(voice => `<option value="${voice.name}">${voice.name} (${voice.lang})</option>`)
+      .join('');
+  }
+  function setVoice() {
+    msg.voice = voices.find(voice => voice.name === this.value);
+    toggle();
+  }
+  function toggle(startOver = true) {
+    speechSynthesis.cancel();
+    if (startOver) {
+      speechSynthesis.speak(msg);
+    }
+  }
+  function setOption() {
+    console.log(msg);
+    msg[this.name] = this.value;
+    toggle();
+  }
+
+  speechSynthesis.addEventListener('voiceschanged', populateVoices);
+  voicesDropdown.addEventListener('change', setVoice);
+  options.forEach(option => option.addEventListener('change', setOption));
+  speakButton.addEventListener('click', toggle);
+  stopButton.addEventListener('click', () => toggle(false));
+
+  // TODO: combine with speech to text for an interactive voice changer
+  // TODO: use this as part of a larger web lofi music machine?
+}
+
+/*
  * ============== Dynamic Script Loading ==============
 */
 window.onload = () => {
@@ -981,6 +1025,9 @@ window.onload = () => {
       break;
     case '/17-magic-moving-highlight':
       magicMovingHighlight();
+      break;
+    case '/18-texttospeech':
+      textToSpeech();
       break;
     default:
       break;

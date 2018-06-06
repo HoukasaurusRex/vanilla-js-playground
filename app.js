@@ -67,6 +67,7 @@ app.get('/14-webcam', vanillajsController.vanillawebcam);
 app.get('/15-speechdetection', vanillajsController.vanillaspeechdetection);
 app.get('/16-speedometer', vanillajsController.vanillaspeedometer);
 app.get('/17-magic-moving-highlight', vanillajsController.vanillamagicmovinghighlight);
+app.get('/18-texttospeech', vanillajsController.vanillatexttospeech);
 
 /**
   * Server listening
