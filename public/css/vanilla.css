@@ -78,9 +78,9 @@ kbd {
   transform: translateY(-3px); /* account for the height of the clock hands */
 }
 .hand {
-  width:50%;
-  height:6px;
-  background:black;
+  width: 50%;
+  height: 6px;
+  background: black;
   position: absolute;
   top:50%;
   transform-origin: 100%;
@@ -687,7 +687,7 @@ span.population {
   line-height: 2;
   position: relative;
 }
-.magichighlight a {
+.magichighlight section a {
   text-decoration: none;
   color: black;
   background: rgba(0,0,0,0.05);
