@@ -22,7 +22,8 @@ exports.vanillavariables = (req, res) => {
 exports.vanillarrays = (req, res) => {
   res.render('vanilla/04-arraycardio', {
     title: 'Vanilla Arrays',
-    page: '04-arraycardio'
+    page: '04-arraycardio',
+    class: 'arrays'
   });
 }
 

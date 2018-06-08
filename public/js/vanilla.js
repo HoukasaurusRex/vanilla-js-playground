@@ -355,6 +355,19 @@ console.log(person, thisGuy);
 // We will hopefully soon see the object ...spread
 
 // Things to note - this is only 1 level deep - both for Arrays and Objects. lodash has a cloneDeep method, but you should think twice before using it.
+console.log('|======== Bubbling, Propagation, Once ========>');
+// NOTE: Bubbling: events capture from top->bottom, then fire from bottom->top
+const divs = document.querySelectorAll('div');
+
+function logText(e) {
+  console.log(this.classList.value);
+  e.stopPropagation(); // stop bubbling
+}
+
+divs.forEach(div => div.addEventListener('click', logText, {
+  // capture: true, // fire events on capture
+  once: true      // only fires one time
+}));
 }
 
 /*

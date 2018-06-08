@@ -106,6 +106,25 @@ kbd {
 }
 
 /**
+  * ============== Array Cardio Styles =========== ===
+**/
+.arrays div {
+  padding: 100px;
+}
+
+.arrays .one {
+  background: thistle;
+}
+
+.arrays .two {
+  background: mistyrose;
+}
+
+.arrays .three {
+  background: coral;
+}
+
+/**
   * ============== Flex Panels Styles ==============
 **/
 .panels {
