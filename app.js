@@ -9,22 +9,23 @@ const exphbs  = require('express-handlebars');
 const homeController = require('./controllers/home');
 const vanillajsController = require('./controllers/vanilla');
 
+/**
+ * Server configuration
+ */
 const options = {
     key: fs.readFileSync( './localhost.key' ),
     cert: fs.readFileSync( './localhost.cert' ),
     requestCert: false,
     rejectUnauthorized: false
 };
-
 const app = express();
 const port = process.env.PORT || 3000;
+const env = process.env.NODE_ENV || 'development';
 const server = https.createServer(options, app);
 
 /**
  * Express configuration
  */
-// app.set('host', process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0');
-// app.set('port', process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 3000);
 const hbs = exphbs.create({
   defaultLayout: 'main',
   helpers: {
@@ -72,8 +73,11 @@ app.get('/18-texttospeech', vanillajsController.vanillatexttospeech);
 /**
   * Server listening
 **/
-server.listen(port, () => {
-  console.log(`Server is listening on port ${server.address().port}...`);
+// server.listen(port, () => {
+//   console.log(`Server is listening on port ${server.address().port}...`);
+// });
+app.listen(port, () => {
+  console.log(`Server is listening on port ${port} in ${env} mode...`);
 });
 
 module.exports = app;

@@ -1,7 +1,7 @@
 function home() {
   const nav = document.querySelector('#navbar');
   const topOfNav = nav.offsetTop;
-  const hero = document.querySelector('.home');
+  const hero = document.querySelector('.hero');
   const text = hero.querySelector('h1');
   const kickass = `javascript:var%20s%20=%20document.createElement('script');s.type='text/javascript';document.body.appendChild(s);s.src='http://erkie.github.com/asteroids.min.js';void(0);`
   const pressed = [];
@@ -31,7 +31,37 @@ function home() {
       ${xWalk}px ${yWalk * -1}px 0 rgba(255, 0, 0, 0.7),
       ${xWalk * -1}px ${yWalk * -1}px 0 rgba(0, 0, 255, 0.7)
     `;
+    console.log({ xWalk, yWalk });
     // NOTE: add canvas styling
+  }
+  function dragToScroll() {
+      const slider = document.querySelector('.projectscroll');
+      let isDown = false;
+      let startX;
+      let scrollLeft;
+
+      slider.addEventListener('mousedown', (e) => {
+        isDown = true;
+        slider.classList.add('active');
+        startX = e.pageX - slider.offsetLeft;
+        scrollLeft = slider.scrollLeft;
+      });
+      slider.addEventListener('mouseleave', () => {
+        isDown = false;
+        slider.classList.remove('active');
+      });
+      slider.addEventListener('mouseup', () => {
+        isDown = false;
+        slider.classList.remove('active');
+      });
+      slider.addEventListener('mousemove', (e) => {
+        if (!isDown) return; // only run function if dragging in box
+        e.preventDefault();
+        const x = e.pageX - slider.offsetLeft;
+        const walk = (x - startX) * 3; // how far from start to finish
+        slider.scrollLeft = scrollLeft - walk;
+      });
+      // TODO: add inertial scrolling
   }
   function secretCode(e) {
     const helloHal = 'hellohal';
@@ -51,6 +81,7 @@ function home() {
   window.addEventListener('keyup', secretCode);
   window.addEventListener('scroll', fixNav);
   hero.addEventListener('mousemove', shadow);
+  dragToScroll();
 }
 
 /*

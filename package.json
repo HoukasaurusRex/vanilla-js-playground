@@ -8,7 +8,7 @@
     "watch": "nodemon app.js -e js,handlebars"
   },
   "engines": {
-    "node": "8.11.1"
+    "node": ">=v4.9.1"
   },
   "author": "JT Houk",
   "license": "ISC",
@@ -17,5 +17,6 @@
     "express-handlebars": "^3.0.0"
   },
   "devDependencies": {
+    "nodemon": "^1.17.5"
   }
 }

@@ -1,14 +1,14 @@
 exports.vanilladrums = (req, res) => {
   res.render('vanilla/01-jsdrumkit', {
     title: 'Vanilla Drums',
-    page: '01-jsdrumkit'
+    page: '01-drumkit'
   });
 }
 
 exports.vanillaclock = (req, res) => {
   res.render('vanilla/02-js-css-clock', {
     title: 'Vanilla Clock',
-    page: '02-js-css-clock'
+    page: '02-clock'
   });
 }
 
