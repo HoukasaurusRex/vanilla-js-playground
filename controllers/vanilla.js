@@ -1,12 +1,12 @@
 exports.vanilladrums = (req, res) => {
-  res.render('vanilla/01-jsdrumkit', {
+  res.render('vanilla/01-drumkit', {
     title: 'Vanilla Drums',
     page: '01-drumkit'
   });
 }
 
 exports.vanillaclock = (req, res) => {
-  res.render('vanilla/02-js-css-clock', {
+  res.render('vanilla/02-clock', {
     title: 'Vanilla Clock',
     page: '02-clock'
   });

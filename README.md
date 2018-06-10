@@ -7,15 +7,33 @@ A collection of javascript projects served up on node with express and designed 
 ## Scope
 
 ## Overview
-* JS Drumkit
-* JS Clock
+* Drumkit
+* Clock
+* CSS Variables
+* Array Methods
+* Flex Panels
+* Type Ahead
+* Canvas
+* Console Logging
+* Multicheck Boxes
+* Custom Videoplayer
+* Slide on Scroll
+* Local Storage Tapas
+* Sorting Bands
+* Webcam
+* Speech Detection
+* Mobile Speedometer
+* Magic Moving Highlight
+* Text to Speech
 
 ### To-Do
 - [x] Integrate Handlebars
 - [x] Add Controllers and Routes
 - [x] Create Dynamic Scripts & CSS
 - [ ] Image Credit Partials
-- [ ] Create Home Page
+- [ ] Link to Repo
+- [ ] Social Links
+- [x] Create Home Page
  - Header with page links
  - Body with information
  - Footer with contact
@@ -24,6 +42,9 @@ A collection of javascript projects served up on node with express and designed 
 - [ ] Include Blog Push Drawer on Vanilla Pages to Explain Page
 - [ ] Change out .hl class (and others) for html tags
 - [ ] Combine Developer Tools into Single Blog w/ Explanation
+
+### To Refactor
+- [ ] Separate JS to Main Controller and Page files
 
 ### What Next?
 - [ ] CSS Flexbox and Grid Integration
