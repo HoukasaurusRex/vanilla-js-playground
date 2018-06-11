@@ -31,7 +31,6 @@ function home() {
       ${xWalk}px ${yWalk * -1}px 0 rgba(255, 0, 0, 0.7),
       ${xWalk * -1}px ${yWalk * -1}px 0 rgba(0, 0, 255, 0.7)
     `;
-    console.log({ xWalk, yWalk });
     // NOTE: add canvas styling
   }
   function dragToScroll() {
@@ -1092,6 +1091,56 @@ function countdownTimer() {
 }
 
 /*
+ * ============== Whack A Mole ==============
+*/
+function whackAMole() {
+  const scoreBoard = document.querySelector('.score');
+  const holes = document.querySelectorAll('.hole');
+  const moles = document.querySelectorAll('.mole');
+  let timesUp = false;
+  let score = 0;
+  let lastHole;
+
+  function randomTime(max, min) {
+    return Math.round(Math.random() * (max - min) + min);
+  }
+  function randomHole(holesArr) {
+    const idx = Math.floor(Math.random() * holesArr.length);
+    const hole = holesArr[idx];
+
+    if (hole === lastHole) {
+      return randomHole(holes);
+    }
+    lastHole = hole;
+    return hole;
+  }
+  function peep() {
+    const time = randomTime(20, 2000);
+    const hole = randomHole(holes);
+    hole.classList.add('up');
+    setTimeout(() => {
+      hole.classList.remove('up');
+      if (!timesUp) peep();
+    }, time);
+  }
+  window.startGame = function startGame() {
+    scoreBoard.textContent = '0';
+    score = 0;
+    timesUp = false;
+    peep();
+    setTimeout(() => timesUp = true, 10000);
+  }
+  window.bonk = function bonk(e) {
+    if (!e.isTrusted) return;
+    score += 1;
+    this.parentNode.classList.remove('up');
+    scoreBoard.textContent = score.toString();
+  }
+  moles.forEach(mole => mole.addEventListener('click', bonk));
+
+  // TODO: Save high score into local storage
+}
+/*
  * ============== Dynamic Script Loading ==============
 */
 window.onload = () => {
@@ -1161,6 +1210,9 @@ window.onload = () => {
       break;
     case '/19-countdowntimer':
       countdownTimer();
+      break;
+    case '/20-whackamole':
+      whackAMole();
       break;
     default:
       break;

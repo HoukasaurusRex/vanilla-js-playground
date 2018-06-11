@@ -30,6 +30,7 @@ A collection of javascript projects served up on node with express and designed 
 - [x] Integrate Handlebars
 - [x] Add Controllers and Routes
 - [x] Create Dynamic Scripts & CSS
+- [ ] Organize Vanilla Todos
 - [ ] Image Credit Partials
 - [ ] Link to Repo
 - [ ] Social Links
@@ -45,6 +46,7 @@ A collection of javascript projects served up on node with express and designed 
 
 ### To Refactor & Optimize
 - [ ] Separate JS to Main Controller and Page files
+- [ ] Styling Guides for README and CSS pages
 - [ ] Edit Assets
   - [ ] edit image size to avoid browser-side resizing
   - [ ] lower jpeg qulaity

@@ -123,3 +123,10 @@ exports.vanillacountdowntimer = (req, res) => {
     class: 'countdowntimer'
   });
 }
+exports.vanillawhackamole = (req, res) => {
+  res.render('vanilla/20-whackamole', {
+    title: 'Whack A Mole',
+    page: '/20-whackamole',
+    class: 'whackamole'
+  });
+}

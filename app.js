@@ -70,6 +70,7 @@ app.get('/16-speedometer', vanillajsController.vanillaspeedometer);
 app.get('/17-magic-moving-highlight', vanillajsController.vanillamagicmovinghighlight);
 app.get('/18-texttospeech', vanillajsController.vanillatexttospeech);
 app.get('/19-countdowntimer', vanillajsController.vanillacountdowntimer);
+app.get('/20-whackamole', vanillajsController.vanillawhackamole);
 
 /**
   * Server listening
