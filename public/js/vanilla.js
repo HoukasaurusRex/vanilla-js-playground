@@ -606,7 +606,8 @@ function videoPlayer() {
   const progressFilled = document.querySelector('.progress__filled');
   const toggle = document.querySelector('.toggle');
   const ranges = document.querySelectorAll('.player__slider');
-  const skipButtons = document.querySelectorAll('[data-skip]');
+  const skipButtons = document.querySelectorAll('[data-skip]');const speed =  document.querySelector('.speed');
+  const speedFilled = document.querySelector('.speed-filled');
 
   /* Build Out Functions */
   function togglePlay() {
@@ -638,6 +639,19 @@ function videoPlayer() {
     const scrubTime = (e.offsetX / progress.offsetWidth) * video.duration;
     video.currentTime = scrubTime;
   }
+  function setSpeed(e) {
+    const y = e.pageY - this.offsetTop;
+    const percent = y / this.offsetHeight;
+    const height = `${Math.round(percent * 100)}%`;
+    const min = 0.5;
+    const max = 4;
+    const playbackRate = percent * (max - min) + min;
+
+    speedFilled.style.height = height;
+    speedFilled.textContent = `${playbackRate.toFixed(1)}x`;
+    video.playbackRate = playbackRate;
+    console.log(playbackRate);
+  }
 
   /* Hook Up the Event Listeners */
   video.addEventListener('click', togglePlay);
@@ -653,6 +667,7 @@ function videoPlayer() {
   ranges.forEach(range => range.addEventListener('change', handleRangeUpdate));
   ranges.forEach(range => range.addEventListener('mousemove', handleRangeUpdate));
   // NOTE: Future feature: only trigger on mouse down
+  speed.addEventListener('mousemove', setSpeed);
 
   let mousedown = false;
   progress.addEventListener('click', scrub);

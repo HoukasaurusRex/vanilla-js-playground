@@ -43,8 +43,18 @@ A collection of javascript projects served up on node with express and designed 
 - [ ] Change out .hl class (and others) for html tags
 - [ ] Combine Developer Tools into Single Blog w/ Explanation
 
-### To Refactor
+### To Refactor & Optimize
 - [ ] Separate JS to Main Controller and Page files
+- [ ] Edit Assets
+  - [ ] edit image size to avoid browser-side resizing
+  - [ ] lower jpeg qulaity
+  - [ ] use correct image type
+  - [ ] image compression
+  - [ ] strip metadata (keep orientation data)
+  - [ ] css sprite to group many small images into one
+  - [ ] http caching, "expires" header, and fingerprint
+  - [ ] deliver varying resolutions depending on device
+  - [ ] host on CDN?
 
 ### What Next?
 - [ ] CSS Flexbox and Grid Integration
