@@ -4,21 +4,18 @@ exports.vanilladrums = (req, res) => {
     page: '01-drumkit'
   });
 }
-
 exports.vanillaclock = (req, res) => {
   res.render('vanilla/02-clock', {
     title: 'Vanilla Clock',
     page: '02-clock'
   });
 }
-
 exports.vanillavariables = (req, res) => {
   res.render('vanilla/03-cssvariables', {
     title: 'Vanilla Variables',
     page: '03-cssvariables'
   });
 }
-
 exports.vanillarrays = (req, res) => {
   res.render('vanilla/04-arraycardio', {
     title: 'Vanilla Arrays',
@@ -26,42 +23,36 @@ exports.vanillarrays = (req, res) => {
     class: 'arrays'
   });
 }
-
 exports.vanillaflexpanels = (req, res) => {
   res.render('vanilla/05-flexpanels', {
     title: 'Flex Panels 💪',
     page: '05-flexpanels'
   });
 }
-
 exports.vanillatypeahead = (req, res) => {
   res.render('vanilla/06-typeahead', {
     title: 'Type Ahead 👀',
     page: '06-typeahead'
   });
 }
-
 exports.vanillacanvas = (req, res) => {
   res.render('vanilla/07-canvas', {
     title: 'Canvas',
     page: '/07-canvas'
   });
 }
-
 exports.vanillaconsole = (req, res) => {
   res.render('vanilla/08-consolecommander', {
     title: 'Console Commander',
     page: '/08-consolecommander'
   });
 }
-
 exports.vanillamulticheck = (req, res) => {
   res.render('vanilla/09-multicheck', {
     title: 'Multicheck',
     page: '/09-multicheck'
   });
 }
-
 exports.vanillavideoplayer = (req, res) => {
   res.render('vanilla/10-videoplayer', {
     title: 'Video Player',
@@ -69,7 +60,6 @@ exports.vanillavideoplayer = (req, res) => {
     class: 'videoplayer'
   });
 }
-
 exports.vanillaslideonscroll = (req, res) => {
   res.render('vanilla/11-slideonscroll', {
     title: 'Slide on Scroll',
@@ -77,7 +67,6 @@ exports.vanillaslideonscroll = (req, res) => {
     class: 'slideonscroll'
   });
 }
-
 exports.vanillalocalstoragetapas = (req, res) => {
   res.render('vanilla/12-localstoragetapas', {
     title: 'Local Tapas',
@@ -85,7 +74,6 @@ exports.vanillalocalstoragetapas = (req, res) => {
     class: 'localtapas'
   });
 }
-
 exports.vanillasortbands = (req, res) => {
   res.render('vanilla/13-sortbands', {
     title: 'Sort Bands',
@@ -93,7 +81,6 @@ exports.vanillasortbands = (req, res) => {
     class: 'sortbands'
   });
 }
-
 exports.vanillawebcam = (req, res) => {
   res.render('vanilla/14-webcam', {
     title: 'Photobooth',
@@ -101,7 +88,6 @@ exports.vanillawebcam = (req, res) => {
     class: 'webcam'
   });
 }
-
 exports.vanillaspeechdetection = (req, res) => {
   res.render('vanilla/15-speechdetection', {
     title: 'Speech Detection',
@@ -109,7 +95,6 @@ exports.vanillaspeechdetection = (req, res) => {
     class: 'speechdetection'
   });
 }
-
 exports.vanillaspeedometer = (req, res) => {
   res.render('vanilla/16-speedometer', {
     title: 'Speedometer',
@@ -117,7 +102,6 @@ exports.vanillaspeedometer = (req, res) => {
     class: 'speedometer'
   });
 }
-
 exports.vanillamagicmovinghighlight = (req, res) => {
   res.render('vanilla/17-magic-moving-highlight', {
     title: 'Magic Moving Highlight',
@@ -125,11 +109,17 @@ exports.vanillamagicmovinghighlight = (req, res) => {
     class: 'magichighlight'
   });
 }
-
 exports.vanillatexttospeech = (req, res) => {
   res.render('vanilla/18-texttospeech', {
     title: 'Voiceinator',
     page: '/18-texttospeech',
     class: 'texttospeech'
+  });
+}
+exports.vanillacountdowntimer = (req, res) => {
+  res.render('vanilla/19-countdowntimer', {
+    title: 'Countdown',
+    page: '/19-countdowntimer',
+    class: 'countdowntimer'
   });
 }

@@ -1028,6 +1028,70 @@ function textToSpeech() {
 }
 
 /*
+ * ============== Countdown Timer ==============
+*/
+function countdownTimer() {
+  const countdownDisplay = document.querySelector('.display__time-left');
+  const endDisplay = document.querySelector('.display__end-time');
+  const customTime = document.customForm; // easy selector for HTML el with 'name' attr
+  const buttons = document.querySelectorAll('[data-time]');
+  let countdown;
+
+  function displayTimeLeft(seconds) {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    const display = `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+
+    document.title = display;
+    countdownDisplay.textContent = display;
+    console.log(minutes, remainingSeconds);
+  }
+  function displayEndTime(timestamp) {
+    const end = new Date(timestamp);
+    const hours = end.getHours();
+    const minutes = end.getMinutes();
+    const twelveHour = hours > 12 ? hours - 12 : hours;
+
+    endDisplay.textContent = `Back To Work At ${twelveHour}:${minutes < 10 ? '0' : ''}${minutes}`;
+  }
+  function timer(seconds) {
+    const now = Date.now();
+    const then = now + seconds * 1000;
+    // clear existing timers and display initial content
+    clearInterval(countdown);
+    displayTimeLeft(seconds);
+    displayEndTime(then);
+    countdown = setInterval(() => {
+      const secondsLeft = Math.round((then - Date.now()) / 1000);
+
+      // check if we should stop countdown
+      if (secondsLeft < 0) {
+        clearInterval(countdown);
+        return;
+      }
+      // display it!
+      displayTimeLeft(secondsLeft);
+    }, 1000)
+  }
+  function startTimer() {
+    const seconds = parseInt(this.dataset.time);
+    timer(seconds);
+  }
+  function startCustomTimer(e) {
+    e.preventDefault();
+    const minutes = this.minutes.value;
+    const seconds = minutes * 60;
+    timer(seconds);
+    this.reset();
+  }
+
+  customTime.addEventListener('submit', startCustomTimer);
+  buttons.forEach(button => button.addEventListener('click', startTimer));
+
+  // TODO: add end event
+}
+
+/*
  * ============== Dynamic Script Loading ==============
 */
 window.onload = () => {
@@ -1094,6 +1158,9 @@ window.onload = () => {
       break;
     case '/18-texttospeech':
       textToSpeech();
+      break;
+    case '/19-countdowntimer':
+      countdownTimer();
       break;
     default:
       break;
