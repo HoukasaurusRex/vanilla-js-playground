@@ -12,16 +12,16 @@ const vanillajsController = require('./controllers/vanilla');
 /**
  * Server configuration
  */
-const options = {
-    key: fs.readFileSync( './localhost.key' ),
-    cert: fs.readFileSync( './localhost.cert' ),
-    requestCert: false,
-    rejectUnauthorized: false
-};
+// const options = {
+//     key: fs.readFileSync( './localhost.key' ),
+//     cert: fs.readFileSync( './localhost.cert' ),
+//     requestCert: false,
+//     rejectUnauthorized: false
+// };
 const app = express();
 const port = process.env.PORT || 3000;
 const env = process.env.NODE_ENV || 'development';
-const server = https.createServer(options, app);
+// const server = https.createServer(options, app);
 
 /**
  * Express configuration
