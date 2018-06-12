@@ -18,6 +18,10 @@
 /**
   * ============== Drumkit Styles ==============
 **/
+/* TODO: use grid */
+.drumkit {
+  background: url(/assets/backgrounds/drums.jpg) no-repeat fixed center;
+}
 .keys {
   display: flex;
   flex: 1;

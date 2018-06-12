@@ -1,4 +1,5 @@
-function home() {
+
+export function home() {
   const nav = document.querySelector('#navbar');
   const topOfNav = nav.offsetTop;
   const hero = document.querySelector('.hero');
@@ -86,27 +87,27 @@ function home() {
 /*
  * ============== Drumkit JS ==============
 */
-function drumkitCSS() {
-  const html = document.documentElement;
-  html.style.setProperty("--main-background", "url(/assets/backgrounds/drums.jpg)");
-}
-function drumkit(){
+export function drumkit(){
+  const keys = document.querySelectorAll('.key');
   // Attach event listener to play audio and add css class on keydown
-  window.addEventListener('keydown', (e) => {
-    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
-    const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+  function playAudio(e) {
+    const keypress = e.keyCode || e.path[1].attributes[0].value;
+    console.log(keypress);
+    const audio = document.querySelector(`audio[data-key="${keypress}"]`);
+    const key = document.querySelector(`.key[data-key="${keypress}"]`);
     if (!audio) return; // stop function altogether
     audio.currentTime = 0; // rewind to start
     audio.play();
     key.classList.add('playing');
-  });
+  }
   // Function to remove css class
   function removeTransition(e) {
     if (e.propertyName !== 'transform') return; // skip property if not transform
     this.classList.remove('playing');
   }
   // Grab keys array from HTML, listen for css transitions, and call removeTransition function
-  const keys = document.querySelectorAll('.key');
+  window.addEventListener('keydown', playAudio);
+  window.addEventListener('touchstart', playAudio);
   keys.forEach(key => key.addEventListener('transitionend', removeTransition));
 }
 
@@ -117,7 +118,7 @@ function clockCSS() {
   const html = document.documentElement;
   html.style.setProperty("--main-background", "url(/assets/backgrounds/egg.jpg)");
 }
-function clock() {
+export function clock() {
   function setDate() {
     const secondHand = document.querySelector('.second-hand');
     const minuteHand = document.querySelector('.minute-hand');
@@ -155,7 +156,7 @@ function cssvariablesCSS() {
   html.style.setProperty("--body-text-weight", "100");
   html.style.setProperty("--body-text-size", "50px");
 }
-function cssvariables() {
+export function cssvariables() {
   // Get inputs
   const inputs = document.querySelectorAll('.controls input');
   // Set property values
@@ -171,7 +172,7 @@ function cssvariables() {
 /*
  * ============== Array Cardio ==============
 */
-function arrayCardio() {
+export function arrayCardio() {
   // Get your shorts on - this is an array workout!
   console.log('|======== Array Problem Set One ========>');
 
@@ -255,7 +256,7 @@ function arrayCardio() {
   console.log(itemSum);
   // .reduce() can create objects and return frequency of values
 }
-function arrayCardioTwo() {
+export function arrayCardioTwo() {
   console.clear();
   console.log('|======== Array Problem Set Two ========>');
   const people = [
@@ -301,7 +302,7 @@ function arrayCardioTwo() {
   ];
   console.table(newComments);
 }
-function arrayCopyMethods() {
+export function arrayCopyMethods() {
 console.clear();
 console.log('|======== Array Copy Methods ========>');
 // start with strings, numbers and booleans
@@ -408,7 +409,7 @@ function flexpanelsCSS() {
   // console.log(body);
   // body.setProperty("--body-margin", "0");
 }
-function flexpanels() {
+export function flexpanels() {
   const panels = document.querySelectorAll('.panel');
   function toggleOpen() {
     this.classList.toggle('open');
@@ -428,14 +429,14 @@ function flexpanels() {
 function typeAheadCSS() {
 
 }
-function typeAhead() {
+export function typeAhead() {
 
 }
 
 /*
  * ============== Canvas ==============
 */
-function canvas() {
+export function canvas() {
   const canvas = document.querySelector('#draw');
   const ctx = canvas.getContext('2d');
   canvas.height = window.innerHeight;
@@ -494,7 +495,7 @@ function canvas() {
 /*
  * ============== Console Commander ==============
 */
-function consoleCommander() {
+export function consoleCommander() {
   const dogs = [{ name: 'Snickers', age: 2 }, { name: 'Hugo', age: 8 }];
 
   function makeGreen() {
@@ -571,7 +572,7 @@ function consoleCommander() {
 /*
  * ============== Multicheck ==============
 */
-function multiCheck() {
+export function multiCheck() {
   const checkboxes = document.querySelectorAll('.inbox input[type="checkbox"]');
   let lastChecked;
   function handleCheck(e) {
@@ -597,7 +598,7 @@ function multiCheck() {
 /*
  * ============== Video Player ==============
 */
-function videoPlayer() {
+export function videoPlayer() {
   /* Get Our Elements */
   const player = document.querySelector('.player');
   const video = document.querySelector('.viewer');
@@ -680,7 +681,7 @@ function videoPlayer() {
 /*
  * ============== Slide on Scroll ==============
 */
-function slideOnScroll() {
+export function slideOnScroll() {
   function debounce(func, wait = 20, immediate = true) {
     let timeout;
     return function() {
@@ -721,7 +722,7 @@ function slideOnScroll() {
 /*
  * ============== Local Storage Tapas ==============
 */
-function localStorageTapas() {
+export function localStorageTapas() {
   const addItems = document.querySelector('.localtapas__add-items');
   const platesList = document.querySelector('.localtapas__plates');
   const plates = JSON.parse(localStorage.getItem('plates')) || [];
@@ -773,7 +774,7 @@ function localStorageTapas() {
 /*
  * ============== Sort Bands ==============
 */
-function sortBands() {
+export function sortBands() {
   const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
 
   function strip(name) {
@@ -797,7 +798,8 @@ function sortBands() {
 /*
  * ============== Webcam ==============
 */
-function webcam() {
+// TODO: add functions to window
+export function webcam() {
   const video = document.querySelector('.player');
   const canvas = document.querySelector('.photo');
   const ctx = canvas.getContext('2d');
@@ -902,7 +904,7 @@ function webcam() {
 /*
  * ============== Speech Detection ==============
 */
-function speechDetection() {
+export function speechDetection() {
   // setting speech recognition name to be same regardless of browser
   window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
   // create new instance of SpeechRecognition
@@ -943,7 +945,7 @@ function speechDetection() {
 /*
  * ============== Speedometer ==============
 */
-function speedometer() {
+export function speedometer() {
   const arrow = document.querySelector('.arrow');
   const speed = document.querySelector('.speed-value');
 
@@ -960,7 +962,7 @@ function speedometer() {
 /*
  * ============== Magic Moving Highlight ==============
 */
-function magicMovingHighlight() {
+export function magicMovingHighlight() {
   const triggers = document.querySelectorAll('a');
   const highlight = document.createElement('span');
 
@@ -985,7 +987,7 @@ function magicMovingHighlight() {
 /*
  * ============== Text to Speech ==============
 */
-function textToSpeech() {
+export function textToSpeech() {
   const msg = new SpeechSynthesisUtterance(); // what will the speech say?
   let voices = [];
   const voicesDropdown = document.querySelector('[name="voice"]');
@@ -1029,7 +1031,7 @@ function textToSpeech() {
 /*
  * ============== Countdown Timer ==============
 */
-function countdownTimer() {
+export function countdownTimer() {
   const countdownDisplay = document.querySelector('.display__time-left');
   const endDisplay = document.querySelector('.display__end-time');
   const customTime = document.customForm; // easy selector for HTML el with 'name' attr
@@ -1093,7 +1095,7 @@ function countdownTimer() {
 /*
  * ============== Whack A Mole ==============
 */
-function whackAMole() {
+export function whackAMole() {
   const scoreBoard = document.querySelector('.score');
   const holes = document.querySelectorAll('.hole');
   const moles = document.querySelectorAll('.mole');
@@ -1139,84 +1141,6 @@ function whackAMole() {
   moles.forEach(mole => mole.addEventListener('click', bonk));
 
   // TODO: Save high score into local storage
-}
-/*
- * ============== Dynamic Script Loading ==============
-*/
-window.onload = () => {
-  switch (window.location.pathname) {
-    case '/':
-      home();
-      break;
-    case '/01-jsdrumkit':
-      drumkitCSS();
-      drumkit();
-      break;
-    case '/02-js-css-clock':
-      clockCSS();
-      clock();
-      break;
-    case '/03-cssvariables':
-      cssvariablesCSS();
-      cssvariables();
-      break;
-    case '/04-arraycardio':
-      arrayCardio();
-      arrayCardioTwo();
-      arrayCopyMethods();
-      break;
-    case '/05-flexpanels':
-      flexpanelsCSS();
-      flexpanels();
-    case '/06-typeahead':
-      typeAheadCSS();
-      typeAhead();
-      break;
-    case '/07-canvas':
-      canvas();
-      break;
-    case '/08-consolecommander':
-      consoleCommander();
-      break;
-    case '/09-multicheck':
-      multiCheck();
-      break;
-    case '/10-videoplayer':
-      videoPlayer();
-      break;
-    case '/11-slideonscroll':
-      slideOnScroll();
-      break;
-    case '/12-localstoragetapas':
-      localStorageTapas();
-      break;
-    case '/13-sortbands':
-      sortBands();
-      break;
-    case '/14-webcam':
-      window.photobooth = webcam();
-      break;
-    case '/15-speechdetection':
-      speechDetection();
-      break;
-    case '/16-speedometer':
-      speedometer();
-      break;
-    case '/17-magic-moving-highlight':
-      magicMovingHighlight();
-      break;
-    case '/18-texttospeech':
-      textToSpeech();
-      break;
-    case '/19-countdowntimer':
-      countdownTimer();
-      break;
-    case '/20-whackamole':
-      whackAMole();
-      break;
-    default:
-      break;
-  }
 }
 
 /*

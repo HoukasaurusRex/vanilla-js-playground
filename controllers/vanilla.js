@@ -1,19 +1,22 @@
 exports.vanilladrums = (req, res) => {
   res.render('vanilla/01-drumkit', {
     title: 'Vanilla Drums',
-    page: '01-drumkit'
+    page: '01-drumkit',
+    class: 'drumkit'
   });
 }
 exports.vanillaclock = (req, res) => {
   res.render('vanilla/02-clock', {
     title: 'Vanilla Clock',
-    page: '02-clock'
+    page: '02-clock',
+    class: 'clock'
   });
 }
 exports.vanillavariables = (req, res) => {
   res.render('vanilla/03-cssvariables', {
     title: 'Vanilla Variables',
-    page: '03-cssvariables'
+    page: '03-cssvariables',
+    class: 'cssvariables'
   });
 }
 exports.vanillarrays = (req, res) => {
@@ -26,31 +29,36 @@ exports.vanillarrays = (req, res) => {
 exports.vanillaflexpanels = (req, res) => {
   res.render('vanilla/05-flexpanels', {
     title: 'Flex Panels 💪',
-    page: '05-flexpanels'
+    page: '05-flexpanels',
+    class: 'flexpanels'
   });
 }
 exports.vanillatypeahead = (req, res) => {
   res.render('vanilla/06-typeahead', {
     title: 'Type Ahead 👀',
-    page: '06-typeahead'
+    page: '06-typeahead',
+    class: 'typeahead'
   });
 }
 exports.vanillacanvas = (req, res) => {
   res.render('vanilla/07-canvas', {
     title: 'Canvas',
-    page: '/07-canvas'
+    page: '/07-canvas',
+    class: 'canvas'
   });
 }
 exports.vanillaconsole = (req, res) => {
   res.render('vanilla/08-consolecommander', {
     title: 'Console Commander',
-    page: '/08-consolecommander'
+    page: '/08-consolecommander',
+    class: 'consolecommander'
   });
 }
 exports.vanillamulticheck = (req, res) => {
   res.render('vanilla/09-multicheck', {
     title: 'Multicheck',
-    page: '/09-multicheck'
+    page: '/09-multicheck',
+    class: 'multicheck'
   });
 }
 exports.vanillavideoplayer = (req, res) => {

@@ -30,14 +30,15 @@ A collection of javascript projects served up on node with express and designed 
 - [x] Integrate Handlebars
 - [x] Add Controllers and Routes
 - [x] Create Dynamic Scripts & CSS
-- [ ] Organize Vanilla Todos
-- [ ] Image Credit Partials
-- [ ] Link to Repo
-- [ ] Social Links
 - [x] Create Home Page
  - Header with page links
  - Body with information
  - Footer with contact
+- [ ] Organize Vanilla Todos
+- [ ] Image Credit Partials
+- [ ] Link to Repo
+- [ ] Social Links
+- [ ] Extend Body to Hide White Space
 - [ ] Complete 30 Unique Projects
 - [ ] Write HTML Blog Post for Array Pages
 - [ ] Include Blog Push Drawer on Vanilla Pages to Explain Page
