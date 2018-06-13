@@ -114,10 +114,6 @@ export function drumkit(){
 /*
  * ============== Clock JS ==============
 */
-function clockCSS() {
-  const html = document.documentElement;
-  html.style.setProperty("--main-background", "url(/assets/backgrounds/egg.jpg)");
-}
 export function clock() {
   function setDate() {
     const secondHand = document.querySelector('.second-hand');
@@ -148,14 +144,6 @@ export function clock() {
 /*
  * ============== CSS Variables ==============
 */
-function cssvariablesCSS() {
-  const html = document.documentElement;
-  html.style.setProperty("--main-background", "none");
-  html.style.setProperty("--main-background-size", "none");
-  html.style.setProperty("--body-background", "#193549");
-  html.style.setProperty("--body-text-weight", "100");
-  html.style.setProperty("--body-text-size", "50px");
-}
 export function cssvariables() {
   // Get inputs
   const inputs = document.querySelectorAll('.controls input');
@@ -934,7 +922,7 @@ export function speechDetection() {
       window.location.reload(true);
     }
     // NOTE: debounce listener
-    console.log(transcript);
+    console.log(`${Math.round(e.results[0][0].confidence * 100)}% - ${transcript}`);
   });
 
   recognition.addEventListener('end', recognition.start);

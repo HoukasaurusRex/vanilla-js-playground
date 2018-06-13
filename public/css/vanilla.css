@@ -62,13 +62,16 @@ kbd {
   * ============== Clock Styles ==============
 **/
 .clock {
+  background: url(/assets/backgrounds/egg.jpg) no-repeat fixed center;
+}
+.clock__wrapper {
   width: 30rem;
   height: 30rem;
-  border:20px solid white;
-  border-radius:50%;
-  margin:50px auto;
+  border: 20px solid white;
+  border-radius: 50%;
+  margin: 50px auto;
   position: relative;
-  padding:2rem;
+  padding: 2rem;
   box-shadow:
     0 0 0 4px rgba(0,0,0,0.1),
     inset 0 0 0 3px #EFEFEF,
@@ -96,17 +99,35 @@ kbd {
 /**
   * ============== CSS Variables Styles ==============
 **/
-.cssvariables img {
+/* TODO: create image-editing platform */
+.cssvariables {
+  background: linear-gradient(135deg, #7c1599 0%,#921099 48%,#7e4ae8 100%);
+}
+.cssvariables section {
+  display: grid;
+  grid-template-columns: 100px auto 100px;
+}
+.cssvariables h2 {
+  grid-column: 2 / 3;
+  justify-self: center;
+}
+.cssvariables .controls {
+  grid-column: 2 / 3;
+  justify-self: center;
+  margin-bottom: 50px;
+}
+.cssvariables .variable-img {
+  content: url(/assets/backgrounds/great-wall.jpg);
+  grid-column: 2 / 3;
+  justify-self: center;
   padding: var(--spacing);
   filter: blur(var(--blur));
   background: var(--base);
   width: 60%;
 }
+
 .hl {
   color: var(--base);
-}
-.cssvariables .controls {
-  margin-bottom: 50px;
 }
 
 /**
