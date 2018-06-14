@@ -37,8 +37,8 @@ const hbs = exphbs.create({
       return options.inverse(this);
     },
     section(name, options) {
-      if (!this.sections) this.sections = {};
-      this.sections[name] = options.fn(this);
+      if (!this._sections) this._sections = {};
+      this._sections[name] = options.fn(this);
       return null;
     },
     toJSON: object => JSON.stringify(object),
