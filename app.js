@@ -1,11 +1,12 @@
-const https = require('https');
-const fs = require('fs');
+// const https = require('https');
+// const fs = require('fs');
+const path = require('path');
 const express = require('express');
-const exphbs  = require('express-handlebars');
+const exphbs = require('express-handlebars');
 
-/**
-  * Controllers
-**/
+/*
+** Controllers
+*/
 const homeController = require('./controllers/home');
 const vanillajsController = require('./controllers/vanilla');
 
@@ -23,9 +24,9 @@ const port = process.env.PORT || 3000;
 const env = process.env.NODE_ENV || 'development';
 // const server = https.createServer(options, app);
 
-/**
- * Express configuration
- */
+/*
+** Express configuration
+*/
 const hbs = exphbs.create({
   defaultLayout: 'main',
   helpers: {
@@ -35,21 +36,21 @@ const hbs = exphbs.create({
       }
       return options.inverse(this);
     },
-    section: function(name, options) {
-          if(!this._sections) this._sections = {};
-          this._sections[name] = options.fn(this);
-          return null;
-      },
-    toJSON: object => JSON.stringify(object)
-  }
+    section(name, options) {
+      if (!this.sections) this.sections = {};
+      this.sections[name] = options.fn(this);
+      return null;
+    },
+    toJSON: object => JSON.stringify(object),
+  },
 });
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(path.join(__dirname, '/public')));
 
-/**
-  * Primary app routes
-**/
+/*
+** Primary app routes
+*/
 app.get('/', homeController.home);
 app.get('/01-drumkit', vanillajsController.vanilladrums);
 app.get('/02-clock', vanillajsController.vanillaclock);
@@ -72,9 +73,9 @@ app.get('/18-texttospeech', vanillajsController.vanillatexttospeech);
 app.get('/19-countdowntimer', vanillajsController.vanillacountdowntimer);
 app.get('/20-whackamole', vanillajsController.vanillawhackamole);
 
-/**
-  * Server listening
-**/
+/*
+** Server listening
+*/
 // server.listen(port, () => {
 //   console.log(`Server is listening on port ${server.address().port}...`);
 // });

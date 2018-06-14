@@ -87,12 +87,12 @@ export function home() {
 /*
  * ============== Drumkit JS ==============
 */
-export function drumkit(){
+export function drumkit() {
   const keys = document.querySelectorAll('.key');
   // Attach event listener to play audio and add css class on keydown
   function playAudio(e) {
+    e.preventDefault();
     const keypress = e.keyCode || e.path[1].attributes[0].value;
-    console.log(keypress);
     const audio = document.querySelector(`audio[data-key="${keypress}"]`);
     const key = document.querySelector(`.key[data-key="${keypress}"]`);
     if (!audio) return; // stop function altogether
@@ -291,112 +291,107 @@ export function arrayCardioTwo() {
   console.table(newComments);
 }
 export function arrayCopyMethods() {
-console.clear();
-console.log('|======== Array Copy Methods ========>');
-// start with strings, numbers and booleans
+  console.clear();
+  console.log('|======== Array Copy Methods ========>');
+  // start with strings, numbers and booleans
 
-// Let's say we have an array
-const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
+  // Let's say we have an array
+  const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
 
-// and we want to make a copy of it.
+  // and we want to make a copy of it.
 
-// You might think we can just do something like this:
-let team = players;
+  // You might think we can just do something like this:
+  let team = players;
 
-// however what happens when we update that array?
-team[3] = 'Slops';
+  // however what happens when we update that array?
+  team[3] = 'Slops';
 
-// now here is the problem!
-console.log(team, players);
+  // now here is the problem!
+  console.log(team, players);
 
-// oh no - we have edited the original array too!
+  // oh no - we have edited the original array too!
 
-// Why? It's because that is an array reference, not an array copy. They both point to the same array!
+  // Why? It's because that is an array reference, not an array copy. They both point to the same array!
 
-// So, how do we fix this? We take a copy instead!
-const fruits = ['apples', 'banaynays', 'jellybeans', 'greeps']
+  // So, how do we fix this? We take a copy instead!
+  const fruits = ['apples', 'banaynays', 'jellybeans', 'greeps']
 
-// one way
-let trueFruits = fruits.slice();
-trueFruits[2] = 'creenburris';
-console.log(fruits, trueFruits);
+  // one way
+  let trueFruits = fruits.slice();
+  trueFruits[2] = 'creenburris';
+  console.log(fruits, trueFruits);
 
-// or create a new array and concat the old one in
-let moreFruits = ['avocadoos'].concat(fruits);
-console.log(fruits, moreFruits);
+  // or create a new array and concat the old one in
+  let moreFruits = ['avocadoos'].concat(fruits);
+  console.log(fruits, moreFruits);
 
-// or use the new ES6 Spread
-let sameFruits = [...fruits];
-console.log(fruits, sameFruits);
+  // or use the new ES6 Spread
+  let sameFruits = [...fruits];
+  console.log(fruits, sameFruits);
 
-// now when we update it, the original one isn't changed
-sameFruits[0] = 'pooples';
-console.log(fruits, sameFruits);
+  // now when we update it, the original one isn't changed
+  sameFruits[0] = 'pooples';
+  console.log(fruits, sameFruits);
 
-// The same thing goes for objects, let's say we have a person object
+  // The same thing goes for objects, let's say we have a person object
 
-// with Objects
-const person = {
-  name: 'Wes Bos',
-  age: 80,
-  hobbies: {
-    outer: 'being a wes',
-    inner: 'being a bos'
+  // with Objects
+  const person = {
+    name: 'Wes Bos',
+    age: 80,
+    hobbies: {
+      outer: 'being a wes',
+      inner: 'being a bos'
+    }
+  };
+
+  // and think we make a copy:
+  let newPerson = person;
+  newPerson = {
+    name: 'McPoopy',
+    age: 2,
+    hobbies: {
+      erry: 'nothin',
+      day: 'at',
+      lyf: 'all'
+    }
+  };
+  console.log(person, newPerson);
+
+  // how do we take a copy instead?
+  let thisGuy = Object.assign({}, person);
+  thisGuy = {
+    name: 'McPoopy',
+    age: 2,
+    hobbies: {
+      erry: 'nothin',
+      day: 'at',
+      lyf: 'all',
+    },
+  };
+  console.log(person, thisGuy);
+
+  // We will hopefully soon see the object ...spread
+
+  // Things to note - this is only 1 level deep - both for Arrays and Objects. lodash has a cloneDeep method, but you should think twice before using it.
+  console.log('|======== Bubbling, Propagation, Once ========>');
+  // NOTE: Bubbling: events capture from top->bottom, then fire from bottom->top
+  const divs = document.querySelectorAll('div');
+
+  function logText(e) {
+    console.log(this.classList.value);
+    e.stopPropagation(); // stop bubbling
   }
-};
 
-// and think we make a copy:
-let newPerson = person;
-newPerson = {
-  name: 'McPoopy',
-  age: 2,
-  hobbies: {
-    erry: 'nothin',
-    day: 'at',
-    lyf: 'all'
-  }
-};
-console.log(person, newPerson);
-
-// how do we take a copy instead?
-let thisGuy = Object.assign({}, person);
-thisGuy = {
-  name: 'McPoopy',
-  age: 2,
-  hobbies: {
-    erry: 'nothin',
-    day: 'at',
-    lyf: 'all'
-  }
-};
-console.log(person, thisGuy);
-
-// We will hopefully soon see the object ...spread
-
-// Things to note - this is only 1 level deep - both for Arrays and Objects. lodash has a cloneDeep method, but you should think twice before using it.
-console.log('|======== Bubbling, Propagation, Once ========>');
-// NOTE: Bubbling: events capture from top->bottom, then fire from bottom->top
-const divs = document.querySelectorAll('div');
-
-function logText(e) {
-  console.log(this.classList.value);
-  e.stopPropagation(); // stop bubbling
-}
-
-divs.forEach(div => div.addEventListener('click', logText, {
-  // capture: true, // fire events on capture
-  once: true      // only fires one time
-}));
+  divs.forEach(div => div.addEventListener('click', logText, {
+    // capture: true, // fire events on capture
+    once: true      // only fires one time
+  }));
 }
 
 /*
  * ============== Flex Panels ==============
 */
-function flexpanelsCSS() {
-  // const body = document.body;
-  // console.log(body);
-  // body.setProperty("--body-margin", "0");
-}
 export function flexpanels() {
   const panels = document.querySelectorAll('.panel');
   function toggleOpen() {
@@ -414,21 +409,54 @@ export function flexpanels() {
 /*
  * ============== Type Ahead ==============
 */
-function typeAheadCSS() {
-
-}
 export function typeAhead() {
+  const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+  const cities = [];
+  const searchInput = document.querySelector('.search');
+  const suggestions = document.querySelector('.suggestions');
 
+  function findMatches(wordToMatch, places) {
+    return places.filter((place) => {
+      // figure out if city or state matches entry
+      const regex = new RegExp(wordToMatch, 'gi'); // global && insensitive
+      return place.city.match(regex) || place.state.match(regex);
+    });
+  }
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  }
+  function displayMatches() {
+    const matchArray = findMatches(this.value, cities);
+    const html = matchArray.map((place) => {
+      const regex = new RegExp(this.value, 'gi');
+      const cityName = place.city.replace(regex, `<span class="search-hl">${this.value}</span>`);
+      const stateName = place.state.replace(regex, `<span class="search-hl">${this.value}</span>`);
+      return `
+        <li>
+          <span class="name">${cityName}, ${stateName}</span>
+          <span class="population">${numberWithCommas(place.population)}</span>
+        </li>
+      `;
+    }).join('');
+    suggestions.innerHTML = html;
+  }
+
+  fetch(endpoint)
+    .then(blob => blob.json())
+    .then(data => cities.push(...data));
+
+  searchInput.addEventListener('keyup', displayMatches);
+  searchInput.addEventListener('change', displayMatches);
 }
 
 /*
  * ============== Canvas ==============
 */
 export function canvas() {
-  const canvas = document.querySelector('#draw');
-  const ctx = canvas.getContext('2d');
-  canvas.height = window.innerHeight;
-  canvas.width = window.innerWidth;
+  const paintCanvas = document.querySelector('#draw');
+  const ctx = paintCanvas.getContext('2d');
+  paintCanvas.height = window.innerHeight;
+  paintCanvas.width = window.innerWidth;
   ctx.lineJoin = 'round';
   ctx.lineCap = 'round';
   ctx.lineWidth = 100;
@@ -450,34 +478,44 @@ export function canvas() {
 
   function draw(e) {
     if (!isDrawing) return;
-    // console.log(e);
+    e.preventDefault();
+    const pathX = e.offsetX || e.touches[0].pageX;
+    const pathY = e.offsetY || e.touches[0].pageY;
+
     ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
     ctx.beginPath();
     // Start from
     ctx.moveTo(lastX, lastY);
     // Go to
-    ctx.lineTo(e.offsetX, e.offsetY);
+    ctx.lineTo(pathX, pathY);
     ctx.stroke();
-    [lastX, lastY] = [e.offsetX, e.offsetY];
+    [lastX, lastY] = [pathX, pathY];
     // Color and Size
-    hue++;
-    if(hue >= 360) { hue = 0; }
-    if(ctx.lineWidth >= 100 || ctx.lineWidth <= 1) {
+    hue += 1;
+    if (hue >= 360) { hue = 0; }
+    if (ctx.lineWidth >= 100 || ctx.lineWidth <= 1) {
       direction = !direction;
     }
-    if(direction) {
-      ctx.lineWidth++;
+    if (direction) {
+      ctx.lineWidth += 1;
     } else {
-      ctx.lineWidth--;
+      ctx.lineWidth -= 1;
     }
   }
-  canvas.addEventListener('mousedown', (e) => {
+  paintCanvas.addEventListener('mousedown', (e) => {
     isDrawing = true;
     [lastX, lastY] = [e.offsetX, e.offsetY];
   });
-  canvas.addEventListener('mousemove', draw);
-  canvas.addEventListener('mouseup', () => isDrawing = false);
-  canvas.addEventListener('mouseout', () => isDrawing = false);
+  paintCanvas.addEventListener('touchstart', (e) => {
+    isDrawing = true;
+    [lastX, lastY] = [e.touches[0].pageX, e.touches[0].pageY];
+    console.log(e);
+    console.log({ lastX, lastY });
+  });
+  paintCanvas.addEventListener('mousemove', draw);
+  paintCanvas.addEventListener('touchmove', draw);
+  paintCanvas.addEventListener('mouseup', () => isDrawing = false);
+  paintCanvas.addEventListener('mouseout', () => isDrawing = false);
 }
 
 /*
