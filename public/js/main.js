@@ -21,7 +21,8 @@ import {
   textToSpeech,
   countdownTimer,
   whackAMole,
- } from './vanilla.js';
+  webcam,
+} from './vanilla.js';
 
 /*
  * ============== Dynamic Script Loading ==============
@@ -47,6 +48,7 @@ window.onload = () => {
       break;
     case '/05-flexpanels':
       flexpanels();
+      break;
     case '/06-typeahead':
       typeAhead();
       break;
@@ -72,7 +74,7 @@ window.onload = () => {
       sortBands();
       break;
     case '/14-webcam':
-      window.photobooth = webcam();
+      webcam();
       break;
     case '/15-speechdetection':
       speechDetection();

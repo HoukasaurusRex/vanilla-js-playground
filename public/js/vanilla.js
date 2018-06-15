@@ -1,11 +1,13 @@
 
 export function home() {
   const nav = document.querySelector('#navbar');
+  const goHome = document.querySelector('#go-home');
   const topOfNav = nav.offsetTop;
   const hero = document.querySelector('.hero');
   const text = hero.querySelector('h1');
-  const kickass = `javascript:var%20s%20=%20document.createElement('script');s.type='text/javascript';document.body.appendChild(s);s.src='http://erkie.github.com/asteroids.min.js';void(0);`
+  const kickass = 'javascript:var%20s%20=%20document.createElement("script");s.type="text/javascript";document.body.appendChild(s);s.src="http://erkie.github.com/asteroids.min.js";void(0);'
   const pressed = [];
+  let timeOut;
 
   function fixNav() {
     if (window.scrollY >= topOfNav) {
@@ -21,8 +23,8 @@ export function home() {
     const { offsetWidth: width, offsetHeight: height } = hero;
     let { offsetX: x, offsetY: y } = e;
     if (this !== e.target) {
-      x = x + e.target.offsetLeft;
-      y = y + e.target.offsetTop;
+      x += e.target.offsetLeft;
+      y += e.target.offsetTop;
     }
     const xWalk = (x / width * walk) - (walk / 2);
     const yWalk = (y / height * walk) - (walk / 2);
@@ -35,33 +37,33 @@ export function home() {
     // NOTE: add canvas styling
   }
   function dragToScroll() {
-      const slider = document.querySelector('.projectscroll');
-      let isDown = false;
-      let startX;
-      let scrollLeft;
+    const slider = document.querySelector('.projectscroll');
+    let isDown = false;
+    let startX;
+    let scrollLeft;
 
-      slider.addEventListener('mousedown', (e) => {
-        isDown = true;
-        slider.classList.add('active');
-        startX = e.pageX - slider.offsetLeft;
-        scrollLeft = slider.scrollLeft;
-      });
-      slider.addEventListener('mouseleave', () => {
-        isDown = false;
-        slider.classList.remove('active');
-      });
-      slider.addEventListener('mouseup', () => {
-        isDown = false;
-        slider.classList.remove('active');
-      });
-      slider.addEventListener('mousemove', (e) => {
-        if (!isDown) return; // only run function if dragging in box
-        e.preventDefault();
-        const x = e.pageX - slider.offsetLeft;
-        const walk = (x - startX) * 3; // how far from start to finish
-        slider.scrollLeft = scrollLeft - walk;
-      });
-      // TODO: add inertial scrolling
+    slider.addEventListener('mousedown', (e) => {
+      isDown = true;
+      slider.classList.add('active');
+      startX = e.pageX - slider.offsetLeft;
+      scrollLeft = slider.scrollLeft;
+    });
+    slider.addEventListener('mouseleave', () => {
+      isDown = false;
+      slider.classList.remove('active');
+    });
+    slider.addEventListener('mouseup', () => {
+      isDown = false;
+      slider.classList.remove('active');
+    });
+    slider.addEventListener('mousemove', (e) => {
+      if (!isDown) return; // only run function if dragging in box
+      e.preventDefault();
+      const x = e.pageX - slider.offsetLeft;
+      const walk = (x - startX) * 3; // how far from start to finish
+      slider.scrollLeft = scrollLeft - walk;
+    });
+    // TODO: add inertial scrolling
   }
   function secretCode(e) {
     const helloHal = 'hellohal';
@@ -72,15 +74,25 @@ export function home() {
     console.log(pressed.join(''));
     if (pressed.join('').includes(helloHal)) {
       alert('Hello, Dave');
-      hero.style.setProperty("background", "url(/assets/backgrounds/hal9000.png)");
+      hero.style.setProperty('background', 'url(/assets/backgrounds/hal9000.png)');
     } else if (pressed.join('').includes(konami)) {
       alert('Break It All');
       window.location = kickass;
     }
   }
+  window.scrollToTop = () => {
+    if (document.body.scrollTop !== 0 || document.documentElement.scrollTop !== 0) {
+      window.scrollBy(0, -50);
+      timeOut = setTimeout('scrollToTop()', 10);
+    } else {
+      clearTimeout(timeOut);
+    }
+  };
   window.addEventListener('keyup', secretCode);
   window.addEventListener('scroll', fixNav);
   hero.addEventListener('mousemove', shadow);
+  // goHome.setAttribute('href', '#top');
+  // goHome.addEventListener('onclick', scrollToTop);
   dragToScroll();
 }
 
@@ -586,7 +598,7 @@ export function consoleCommander() {
   console.time('fetching some data');
   fetch('https://api.github.com/users/pterobyte')
     .then(data => data.json())
-    .then(data => {
+    .then((data) => {
       console.timeEnd('fetching some data')
       console.log(data);
     });
@@ -605,8 +617,8 @@ export function multiCheck() {
     // Check if shifkey down and box is checked
     let inBetween = false;
     if (e.shiftKey && this.checked) {
-      checkboxes.forEach(checkbox => {
-        console.log(checkbox);
+      checkboxes.forEach((box) => {
+        const checkbox = box;
         if (checkbox === this || checkbox === lastChecked) {
           inBetween = !inBetween;
           console.log('inBetween triggered');
@@ -614,7 +626,7 @@ export function multiCheck() {
         if (inBetween) {
           checkbox.checked = true;
         }
-      })
+      });
     }
     lastChecked = this;
   }
@@ -626,7 +638,7 @@ export function multiCheck() {
 */
 export function videoPlayer() {
   /* Get Our Elements */
-  const player = document.querySelector('.player');
+  const player = document.querySelector('.videoplayer__wrapper');
   const video = document.querySelector('.viewer');
   const progress = document.querySelector('.progress');
   const progressFilled = document.querySelector('.progress__filled');
@@ -639,11 +651,6 @@ export function videoPlayer() {
   function togglePlay() {
     const method = video.paused ? 'play' : 'pause';
     video[method](); // results in video.play() || video.pause()
-    // if (video.paused) {
-    //   video.play();
-    // } else {
-    //   video.pause();
-    // }
   }
   function updateButton() {
     const icon = video.paused ? '►' : '❚ ❚';
@@ -676,7 +683,6 @@ export function videoPlayer() {
     speedFilled.style.height = height;
     speedFilled.textContent = `${playbackRate.toFixed(1)}x`;
     video.playbackRate = playbackRate;
-    console.log(playbackRate);
   }
 
   /* Hook Up the Event Listeners */
@@ -695,24 +701,28 @@ export function videoPlayer() {
   // NOTE: Future feature: only trigger on mouse down
   speed.addEventListener('mousemove', setSpeed);
 
-  let mousedown = false;
+  const mousedown = false;
   progress.addEventListener('click', scrub);
   progress.addEventListener('mousemove', () => mousedown && scrub(e));
   progress.addEventListener('mousedown', () => true);
   progress.addEventListener('mouseup', () => false);
 
   // NOTE: Add fullscreen function
+  // TODO: localstorage remember settings
 }
 
 /*
  * ============== Slide on Scroll ==============
 */
 export function slideOnScroll() {
+  const sliderImages = document.querySelectorAll('.slide-in');
+
   function debounce(func, wait = 20, immediate = true) {
     let timeout;
-    return function() {
-      const context = this, args = arguments;
-      const later = function() {
+    return () => {
+      const context = this;
+      const args = arguments;
+      const later = () => {
         timeout = null;
         if (!immediate) func.apply(context, args);
       };
@@ -723,9 +733,7 @@ export function slideOnScroll() {
     };
   }
 
-  const sliderImages = document.querySelectorAll('.slide-in');
-
-  function checkSlide(e) {
+  function checkSlide() {
     sliderImages.forEach((image) => {
       // halfway through the image
       const slideInAt = (window.scrollY + window.innerHeight) - (image.height / 2);
@@ -824,14 +832,12 @@ export function sortBands() {
 /*
  * ============== Webcam ==============
 */
-// TODO: add functions to window
 export function webcam() {
   const video = document.querySelector('.player');
-  const canvas = document.querySelector('.photo');
-  const ctx = canvas.getContext('2d');
+  const camCanvas = document.querySelector('.photo');
+  const ctx = camCanvas.getContext('2d');
   const strip = document.querySelector('.strip');
   const snap = document.querySelector('.snap');
-  let pixelFunction = undefined;
 
   function getVideo() {
     navigator.mediaDevices
@@ -847,8 +853,8 @@ export function webcam() {
   function paintToCanvas() {
     const width = video.videoWidth;
     const height = video.videoHeight;
-    canvas.width = width;
-    canvas.height = height;
+    camCanvas.width = width;
+    camCanvas.height = height;
     console.log('Painted');
 
     return setInterval(() => {
@@ -856,54 +862,45 @@ export function webcam() {
       // take out pixels
       let pixels = ctx.getImageData(0, 0, width, height);
       // mess with them
-      if (pixelFunction) { pixels = pixelFunction(pixels); }
+      // if (pixelFunction) { pixels = pixelFunction(pixels); }
       // ctx.globalAlpha = 0.3;
 
       // put them back
       ctx.putImageData(pixels, 0, 0);
     }, 16);
   }
-  function takePhoto() {
-    // play capture sound
-    snap.currentTime = 0;
-    snap.play();
-    // take data out of Canvas
-    const data = canvas.toDataURL('image/jpeg');
-    const link = document.createElement('a');
-    link.href = data;
-    link.setAttribute('download', 'handsome');
-    link.innerHTML = `<img src="${data}" alt="Pretty Face" />`;
-    strip.insertBefore(link, strip.firstChild);
-  }
-  function redEffect(px) {
+  function redEffect(pixel) {
+    const px = pixel;
     for (let i = 0; i < px.data.length; i += 4) {
       // sets each pixel to different color value
-      px.data[i + 0] = px.data[i + 0] + 50 // red
-      px.data[i + 1] = px.data[i + 1] - 30 // green
-      px.data[i + 2] = px.data[i + 2] * 0.5 // blue
+      px.data[i + 0] = px.data[i + 0] + 50; // red
+      px.data[i + 1] = px.data[i + 1] - 30; // green
+      px.data[i + 2] = px.data[i + 2] * 0.5; // blue
     }
     return px;
   }
-  function rgbSplit(px) {
+  function rgbSplit(pixel) {
+    const px = pixel;
     for (let i = 0; i < px.data.length; i += 4) {
       // sets each pixel to future/past pixel value
-      px.data[i - 200] = px.data[i + 0] // red
-      px.data[i + 300] = px.data[i + 1] // green
-      px.data[i - 150] = px.data[i + 2] // blue
+      px.data[i - 200] = px.data[i + 0]; // red
+      px.data[i + 300] = px.data[i + 1]; // green
+      px.data[i - 150] = px.data[i + 2]; // blue
     }
     return px;
   }
-  function greenScreen(px) {
+  function greenScreen(pixel) {
+    const px = pixel;
     const levels = {};
     document.querySelectorAll('.rgb input').forEach((input) => {
       levels[input.name] = input.value;
     });
     for (let i = 0; i < px.data.length; i += 4) {
       // sets each pixel to variable
-      red = px.data[i + 0];
-      green = px.data[i + 1];
-      blue = px.data[i + 2];
-      alpha = px.data[i + 3];
+      const red = px.data[i + 0];
+      const green = px.data[i + 1];
+      const blue = px.data[i + 2];
+      const alpha = px.data[i + 3];
       if (
         red >= levels.rmin
         && green >= levels.gmin
@@ -917,14 +914,21 @@ export function webcam() {
     }
     return px;
   }
+  window.takePhoto = () => {
+    // play capture sound
+    snap.currentTime = 0;
+    snap.play();
+    // take data out of Canvas
+    const data = camCanvas.toDataURL('image/jpeg');
+    const link = document.createElement('a');
+    link.href = data;
+    link.setAttribute('download', 'handsome');
+    link.innerHTML = `<img src="${data}" alt="Pretty Face" />`;
+    strip.insertBefore(link, strip.firstChild);
+  };
+
   getVideo();
   video.addEventListener('canplay', paintToCanvas);
-  return {
-    takePhoto,
-    redEffect,
-    rgbSplit,
-    greenScreen
-  };
 }
 
 /*
@@ -973,12 +977,15 @@ export function speechDetection() {
 */
 export function speedometer() {
   const arrow = document.querySelector('.arrow');
-  const speed = document.querySelector('.speed-value');
+  const speedVal = document.querySelector('.speed-value');
 
   navigator.geolocation.watchPosition((data) => {
-    console.log(data);
-    speed.textContent = data.coords.speed; // set text of span to speed data value
-    arrow.style.transform = `rotate(${data.coords.heading}deg)` // set transform style property on svg to data degrees
+    const { speed } = data.coords;
+    console.log(speed);
+    isNaN(speed)
+      ? speedVal.textContent = 0
+      : speedVal.textContent = speed; // set text of span to speed data value
+    arrow.style.transform = `rotate(${data.coords.heading}deg)`; // set transform style property on svg to data degrees
   }, (err) => {
     console.error(err);
     alert('This app requires access to your location ¯\_(ツ)_/¯');
@@ -1013,13 +1020,16 @@ export function magicMovingHighlight() {
 /*
  * ============== Text to Speech ==============
 */
+// TODO: combine with speech to text for an interactive voice changer
+// TODO: use this as part of a larger web lofi music machine?
+// TODO: Fix for Firefox
 export function textToSpeech() {
   const msg = new SpeechSynthesisUtterance(); // what will the speech say?
-  let voices = [];
-  const voicesDropdown = document.querySelector('[name="voice"]');
   const options = document.querySelectorAll('[type="range"], [name="text"]');
+  const voicesDropdown = document.querySelector('[name="voice"]');
   const speakButton = document.querySelector('#speak');
   const stopButton = document.querySelector('#stop');
+  let voices = [];
   msg.text = document.querySelector('[name="text"]').value;
 
   function populateVoices() {
@@ -1028,15 +1038,15 @@ export function textToSpeech() {
       .map(voice => `<option value="${voice.name}">${voice.name} (${voice.lang})</option>`)
       .join('');
   }
-  function setVoice() {
-    msg.voice = voices.find(voice => voice.name === this.value);
-    toggle();
-  }
   function toggle(startOver = true) {
     speechSynthesis.cancel();
     if (startOver) {
       speechSynthesis.speak(msg);
     }
+  }
+  function setVoice() {
+    msg.voice = voices.find(voice => voice.name === this.value);
+    toggle();
   }
   function setOption() {
     console.log(msg);
@@ -1044,14 +1054,12 @@ export function textToSpeech() {
     toggle();
   }
 
+  // speechSynthesis.onvoiceschanged = populateVoices(speechSynthesis);
   speechSynthesis.addEventListener('voiceschanged', populateVoices);
   voicesDropdown.addEventListener('change', setVoice);
   options.forEach(option => option.addEventListener('change', setOption));
   speakButton.addEventListener('click', toggle);
   stopButton.addEventListener('click', () => toggle(false));
-
-  // TODO: combine with speech to text for an interactive voice changer
-  // TODO: use this as part of a larger web lofi music machine?
 }
 
 /*

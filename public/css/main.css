@@ -5,6 +5,10 @@
   --text-bounce: font-size 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
                  flex 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
                  background 0.2s;
+  --smooth-transition: transition: all 0.5s ease 0s;
+                        -moz-transition: all 0.5s ease 0s;
+                        -webkit-transition: all 0.5s ease 0s;
+                        -o-transition: all 0.5s ease 0s;
 }
 
 /**
@@ -19,7 +23,7 @@ html {
   font-weight: 200;
 }
 body {
-  min-height: 100vh;
+  min-height: 100%;
   margin: 0;
   background-size: cover;
   overflow-x:hidden;
@@ -103,7 +107,8 @@ a {
 .home header {
   height: 100vh;
   /* width: 100vw; */
-  background: url(/assets/backgrounds/vanilla.jpg) fixed;
+  /* background: url(/assets/backgrounds/vanilla.jpg) fixed; */
+  background-color: black;
   background-size: cover;
   display: flex;
   align-items: center;
@@ -177,18 +182,18 @@ a {
   }
 }
 
-.item:nth-child(9n+1) { background: dodgerblue;}
-.item:nth-child(9n+2) { background: goldenrod;}
-.item:nth-child(9n+3) { background: paleturquoise;}
-.item:nth-child(9n+4) { background: gold;}
-.item:nth-child(9n+5) { background: cadetblue;}
-.item:nth-child(9n+6) { background: tomato;}
-.item:nth-child(9n+7) { background: lightcoral;}
-.item:nth-child(9n+8) { background: darkslateblue;}
-.item:nth-child(9n+9) { background: rebeccapurple;}
+.projectscroll .item:nth-child(9n+1) { background: dodgerblue;}
+.projectscroll .item:nth-child(9n+2) { background: goldenrod;}
+.projectscroll .item:nth-child(9n+3) { background: paleturquoise;}
+.projectscroll .item:nth-child(9n+4) { background: gold;}
+.projectscroll .item:nth-child(9n+5) { background: cadetblue;}
+.projectscroll .item:nth-child(9n+6) { background: tomato;}
+.projectscroll .item:nth-child(9n+7) { background: lightcoral;}
+.projectscroll .item:nth-child(9n+8) { background: darkslateblue;}
+.projectscroll .item:nth-child(9n+9) { background: rebeccapurple;}
 
-.item:nth-child(even) { transform: scaleX(1.31) rotateY(40deg); }
-.item:nth-child(odd) { transform: scaleX(1.31) rotateY(-40deg); }
+.projectscroll .item:nth-child(even) { transform: scaleX(1.31) rotateY(40deg); }
+.projectscroll .item:nth-child(odd) { transform: scaleX(1.31) rotateY(-40deg); }
 
 
 /**

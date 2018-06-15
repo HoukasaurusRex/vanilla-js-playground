@@ -289,19 +289,19 @@ span.population {
   color: black;
   text-align: left;
 }
-.inbox {
+.multicheck .inbox {
   max-width:400px;
   margin: 50px auto;
   background:white;
   border-radius:5px;
   box-shadow:10px 10px 0 rgba(0,0,0,0.1);
 }
-.item {
+.multicheck .item {
   display: flex;
   align-items: center;
   border-bottom: 1px solid #F1F1F1;
 }
-.item:last-child {
+.multicheck .item:last-child {
   border-bottom:0;
 }
 .multicheck input:checked + p {
@@ -533,7 +533,7 @@ span.population {
   * ============== Local Storage Tapas ==============
 **/
 .localtapas {
-  background:url('http://wes.io/hx9M/oh-la-la.jpg') center no-repeat;
+  background:url('/assets/backgrounds/ohlala.jpg') center no-repeat fixed;
   background-size: cover;
 }
 .localtapas section {
@@ -607,8 +607,7 @@ span.population {
   * ============== Sort Bands ==============
 **/
 .sortbands {
-  background: url("https://source.unsplash.com/nDqA4d5NL0k/2000x2000");
-  background-size: cover;
+  background: linear-gradient(45deg, #004d40 0, #009688 45%, #e0f2f1 100%) center no-repeat fixed;
 }
 .sortbands section {
   margin: 50px 0;
@@ -634,6 +633,9 @@ span.population {
 /**
   * ============== Webcam ==============
 **/
+.webcam {
+  background-color: black;
+}
 .photobooth {
   background: white;
   max-width: 150rem;
@@ -719,14 +721,13 @@ span.population {
   * ============== Speedometer ==============
 **/
 .speedometer {
-  font-size: 100px;
   background:
     radial-gradient(black 15%, transparent 16%) 0 0,
     radial-gradient(black 15%, transparent 16%) 8px 8px,
     radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
     radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
-  background-color:#282828;
-  background-size:16px 16px;
+  background-color: #282828;
+  background-size: 16px 16px;
   background-attachment: fixed;
 }
 .speedometer section {
@@ -734,13 +735,14 @@ span.population {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  font-size: 100px;
 }
 
 .arrow {
-  width:250px;
+  width: 250px;
   overflow: hidden;
   transition: all 0.2s;
-  transform:rotate(0deg);
+  transform: rotate(0deg);
   display: inline-block;
 }
 
@@ -765,6 +767,7 @@ span.population {
     linear-gradient(135deg, hsla(225, 95%, 50%, 1) 10%, hsla(225, 95%, 50%, 0) 80%),
     linear-gradient(225deg, hsla(140, 90%, 50%, 1) 10%, hsla(140, 90%, 50%, 0) 80%),
     linear-gradient(315deg, hsla(35, 95%, 55%, 1) 100%, hsla(35, 95%, 55%, 0) 70%);
+  background-attachment: fixed;
 }
 .magichighlight .wrapper {
   margin: 0 auto;
@@ -891,8 +894,7 @@ span.population {
   display: none;
 }
 .countdowntimer {
-  background: #8E24AA;
-  background: linear-gradient(45deg,  #42a5f5 0%,#478ed1 50%,#0d47a1 100%);
+  background: linear-gradient(45deg,  #42a5f5 0%,#478ed1 50%,#0d47a1 100%) center fixed;
   margin: 0;
   text-align: center;
   font-family: 'Inconsolata', monospace;
