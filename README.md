@@ -70,9 +70,10 @@ A collection of javascript projects served up on node with express and designed 
 - [ ] CSS Grid Thumbnail Preview Page
 - [ ] Custom Layout for Vanilla Projects
   - Include Scrolling Side Bar Project Viewer
+- [ ] Open Code Pen for Vanilla Projects
 - [ ] Incorporate Material Design
 - [ ] Custom Domain
 - [ ] Static Blog Integration
 - [ ] Add Mocha Testing
-- [ ] Create Electron App
+- [ ] *Create Electron App*
 - [ ] Project Roadmap
